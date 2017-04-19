@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Root Menus -->
+        <!-- Top menu item -->
+        <!--<menuitem id="kams_erp.menu_root" name="KamsERP" web_icon="kams_erp,static/description/icon.png"-->
+                  <!--groups="base.group_user"/>-->
+
+        <!-- Subcategories menu -->
+        <!--<menuitem name="Orders" id="kams_erp.orders" parent="kams_erp.menu_root" sequence="8"-->
+                  <!--groups="base.group_user"/>-->
+
+        <!--<menuitem name="Products" id="kams_erp.products" parent="kams_erp.menu_root" sequence="10"-->
+                  <!--groups="base.group_user"/>-->
+
+        <!-- Menu categories injected-->
+        <menuitem name="Products categories" id="kams_erp.categories_list" parent="sales_team.menu_sales"
+                  action="categories_list_action" sequence="30" groups="base.group_user"/>
+
+        <menuitem name="Manufacturer" id="kams_erp.manufacturer_list" parent="sales_team.menu_sales"
+                  action="manufacturer_list_action" sequence="89" groups="base.group_user"/>
+
+        <menuitem name="Stock Quant" id="kams_erp.stock_quant_list" parent="sales_team.menu_sales"
+                  action="stock_quant_list_action" sequence="99" groups="base.group_user"/>
+
+    </data>
+</openerp>

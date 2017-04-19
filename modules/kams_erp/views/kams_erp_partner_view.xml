@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Add partner categories in partner kanban view -->
+        <record id="res_partner_kanban_view" model="ir.ui.view">
+            <field name="name">res.partner.kanban.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//strong[contains(@class, 'oe_partner_heading')]" position="replace">
+                    <strong class="oe_partner_heading">
+                        <field name="name"/>
+                    </strong>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

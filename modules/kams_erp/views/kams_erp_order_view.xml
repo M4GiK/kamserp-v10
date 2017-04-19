@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record model="ir.actions.act_window" id="product_orders_status_action">
+            <field name="name">Products orders</field>
+            <field name="res_model">sale.order.status</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="help">This analysis gives you a fast overview on the current stock level of your products and
+                their current inventory value.
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_product_orders_status_form">
+            <field name="name">sale.order.status.form</field>
+            <field name="model">sale.order.status</field>
+            <field eval="10" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Orders status">
+                    <field name="name"/>
+                    <!--<field name="status_datetime"/>-->
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_product_orders_status_tree">
+            <field name="name">sale.order.status.tree</field>
+            <field name="model">sale.order.status</field>
+            <field name="arch" type="xml">
+                <tree string="Orders status" editable="top">
+                    <field name="name"/>
+                    <!--<field name="status_datetime"/>-->
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="product_orders_search" model="ir.ui.view">
+            <field name="name">sale.order.line.search</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Sales Order Line">
+                    <filter string="Hide Delivery" domain="[('is_delivery','!=','True')]" name="delivery_off"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="product_orders_action">
+            <field name="name">Products orders</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <!--<field name="context">{'search_default_locationgroup':1, 'group_by': ['product_id']}</field>-->
+            <field name="context">{'search_default_delivery_off':1}</field>
+            <field name="help">This analysis gives you a fast overview on the current stock level of your products and
+                their current inventory value.
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_product_orders_form">
+            <field name="name">sale.order.line.form</field>
+            <field name="model">sale.order.line</field>
+            <field eval="10" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Products in orders">
+                    <field name="product_id"/>
+                    <field name="order_id"/>
+                    <field name="product_uom_qty"/>
+                    <field name="is_delivery" string="Czy jest dostawą" invisible="1"/>
+                    <field name="sale_order_status_date_id" string="Status" widget="many2onebutton"
+                           options="{'no_search': True}">
+                        <field name="name"/>
+                        <field name="order_status_date" widget="many2one" options="{'no_create_edit': True}"/>
+                    </field>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_product_orders_tree">
+            <field name="name">sale.order.line.tree</field>
+            <field name="model">sale.order.line</field>
+            <!--<field eval="10" name="priority"/>-->
+            <field name="arch" type="xml">
+                <tree string="Products in orders" editable="top">
+                    <field name="product_id"/>
+                    <field name="order_id"/>
+                    <field name="product_uom_qty"/>
+                    <!--<field name="product_supplier"/>-->
+                    <field name="is_delivery" string="Czy jest dostawą" invisible="1"/>
+                    <field name="sale_order_status_date_id" string="Status" widget="many2onebutton"
+                           options="{'no_search': True}">
+                        <field name="name"/>
+                        <field name="order_status_date" widget="many2one" options="{'no_create_edit': True}"/>
+                    </field>
+                    <field name="order_status_date" string="Data"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <menuitem name="Orders" id="kams_erp.orders" parent="sales_team.menu_base_partner" sequence="4"
+                  groups="base.group_user"/>
+
+        <menuitem name="Products in orders" id="kams_erp.product_orders" parent="kams_erp.orders"
+                  action="product_orders_action" sequence="31" groups="base.group_user"/>
+
+        <menuitem name="Orders status" id="kams_erp.product_orders_status" parent="kams_erp.orders"
+                  action="product_orders_status_action" sequence="32" groups="base.group_user"/>
+
+        <record id="sale_order_kams_erp_form_view" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form//tree/field[@name='price_subtotal']" position="after">
+                    <!--<field name="name"/>-->
+                    <field name="sale_order_status_date_id" string="Status" widget="many2onebutton">
+                        <field name="name"/>
+                        <field name="order_status_date" widget="many2one" options="{'no_create_edit': True}"/>
+                    </field>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

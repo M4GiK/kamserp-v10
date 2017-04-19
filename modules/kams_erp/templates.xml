@@ -1,0 +1,48 @@
+<openerp>
+    <data>
+
+        <!--<template id="index">-->
+            <!--<t t-call="website.layout">-->
+                <!--<t t-set="title">KamsERP</t>-->
+                <!--<div class="oe_structure">-->
+                    <!--<div class="container">-->
+                        <!--<t t-foreach="users" t-as="user">-->
+                            <!--<p>-->
+                                <!--<a t-attf-href="#{ root }/{{ slug(user) }}  ">-->
+                                    <!--<t t-esc="user.display_name"/>-->
+                                <!--</a>-->
+                            <!--</p>-->
+                        <!--</t>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</t>-->
+        <!--</template>-->
+
+        <!--<template id="object">-->
+            <!--<t t-call="website.layout">-->
+                <!--<t t-set="title">KamsERP</t>-->
+                <!--<div class="oe_structure">-->
+                    <!--<div class="container">-->
+                        <!--<h1>-->
+                            <!--<t t-esc="object.display_name"/>-->
+                        <!--</h1>-->
+                        <!--<p>Last modified: <i t-field="object.write_date" t-field-options='{"widget": "relative"}'/></p>-->
+                        <!--<div t-field="object.biography"/>-->
+                        <!--&lt;!&ndash;<dl>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<t t-foreach="object._fields" t-as="field">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<dt>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<t t-esc="field"/>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</dt>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<dd>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<t t-esc="object[field]"/>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</dd>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</t>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</dl>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</t>-->
+
+        <!--</template>-->
+
+    </data>
+</openerp>

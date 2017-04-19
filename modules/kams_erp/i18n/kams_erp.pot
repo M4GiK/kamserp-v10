@@ -1,0 +1,861 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* kams_erp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-01 10:38+0000\n"
+"PO-Revision-Date: 2016-12-01 10:38+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Kams Technologies\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: kams_erp
+#: model:mail.template,body_html:kams_erp.email_template_edi_invoice
+msgid "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); \">\n"
+"\n"
+"    <p>Hello ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>A new invoice is available for you: </p>\n"
+"    \n"
+"    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"
+"       &nbsp;&nbsp;<strong>REFERENCES</strong><br />\n"
+"       &nbsp;&nbsp;Invoice number: <strong>${object.number}</strong><br />\n"
+"       &nbsp;&nbsp;Invoice total: <strong>${object.amount_total} ${object.currency_id.name}</strong><br />\n"
+"       &nbsp;&nbsp;Invoice date: ${object.date_invoice}<br />\n"
+"       % if object.origin:\n"
+"       &nbsp;&nbsp;Order reference: ${object.origin}<br />\n"
+"       % endif\n"
+"       % if object.user_id:\n"
+"       &nbsp;&nbsp;Your contact: <a href=\"mailto:${object.user_id.email or ''}?subject=Invoice%20${object.number}\">${object.user_id.name}</a>\n"
+"       % endif\n"
+"    </p>  \n"
+"\n"
+"    <% set signup_url = object.get_signup_url() %>\n"
+"    % if signup_url:\n"
+"    <p>\n"
+"    You can access the invoice document and pay online via our Customer Portal:\n"
+"    </p>\n"
+"        <a style=\"display:block; width: 150px; height:20px; margin-left: 120px; color: #DDD; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #8E0000; border-radius: 5px 5px; background-repeat: repeat no-repeat;\"\n"
+"           href=\"${signup_url}\">View Invoice</a>\n"
+"    % endif\n"
+"    \n"
+"    % if object.paypal_url:\n"
+"    <br/>\n"
+"    <p>It is also possible to directly pay with Paypal:</p>\n"
+"        <a style=\"margin-left: 120px;\" href=\"${object.paypal_url}\">\n"
+"            <img class=\"oe_edi_paypal_button\" src=\"/sale/static/img/btn_paynowcc_lg.gif\"/>\n"
+"        </a>\n"
+"    % endif\n"
+"    \n"
+"    <br/>\n"
+"    <p>If you have any question, do not hesitate to contact us.</p>\n"
+"    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>\n"
+"    <br/>\n"
+"    <br/>\n"
+"    <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"        <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"            <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"    </div>\n"
+"    <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"            ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"        </span>\n"
+"        % if object.company_id.phone:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"            </div>\n"
+"        % endif\n"
+"        % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"            </div>\n"
+"        % endif\n"
+"        <p></p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); \">\n"
+"\n"
+"    <p>Witaj ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>Nowa faktura jest dostępna dla Ciebie: </p>\n"
+"    \n"
+"    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"
+"       &nbsp;&nbsp;<strong>ODNOŚNIK</strong><br />\n"
+"       &nbsp;&nbsp;Numer faktury: <strong>${object.number}</strong><br />\n"
+"       &nbsp;&nbsp;Wartość faktury: <strong>${object.amount_total} ${object.currency_id.name}</strong><br />\n"
+"       &nbsp;&nbsp;Data faktury: ${object.date_invoice}<br />\n"
+"       % if object.origin:\n"
+"       &nbsp;&nbsp;Numer odnośnika: ${object.origin}<br />\n"
+"       % endif\n"
+"       % if object.user_id:\n"
+"       &nbsp;&nbsp;Twój kontakt: <a href=\"mailto:${object.user_id.email or ''}?subject=Invoice%20${object.number}\">${object.user_id.name}</a>\n"
+"       % endif\n"
+"    </p>  \n"
+"\n"
+"    <% set signup_url = object.get_signup_url() %>\n"
+"    % if signup_url:\n"
+"    <p>\n"
+"    Możesz skorzystać z dostępu do tego dokumetu przez naszą platformę:\n"
+"    </p>\n"
+"        <a style=\"display:block; width: 150px; height:20px; margin-left: 120px; color: #DDD; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #8E0000; border-radius: 5px 5px; background-repeat: repeat no-repeat;\"\n"
+"           href=\"${signup_url}\">Zobacz Fakturę</a>\n"
+"    % endif\n"
+"    \n"
+"    % if object.paypal_url:\n"
+"    <br/>\n"
+"    <p>Także jest możliwe opłacenie bezpośrednio przez PayPala:</p>\n"
+"        <a style=\"margin-left: 120px;\" href=\"${object.paypal_url}\">\n"
+"            <img class=\"oe_edi_paypal_button\" src=\"/sale/static/img/btn_paynowcc_lg.gif\"/>\n"
+"        </a>\n"
+"    % endif\n"
+"    \n"
+"    <br/>\n"
+"    <p>Jeśli masz jakiekolwiek pytania, nie wahaj się z nami skontaktować.</p>\n"
+"    <p>Dziękujemy za wybranie ${object.company_id.name or 'nas'}!</p>\n"
+"    <br/>\n"
+"    <br/>\n"
+"    <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"        <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"            <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"    </div>\n"
+"    <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"            ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"        </span>\n"
+"        % if object.company_id.phone:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Telefon:&nbsp; ${object.company_id.phone}\n"
+"            </div>\n"
+"        % endif\n"
+"        % if object.company_id.website:\n"
+"            <div>\n"
+"                Strona www:&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"            </div>\n"
+"        % endif\n"
+"        <p></p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+
+#. module: kams_erp
+#: model:mail.template,body_html:kams_erp.email_template_edi_sale
+msgid "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); \">\n"
+"\n"
+"    <p>Hello ${object.partner_id.name},</p>\n"
+"    \n"
+"    <p>Here is your ${object.state in ('draft', 'sent') and 'quotation' or 'order confirmation'} from ${object.company_id.name}: </p>\n"
+"\n"
+"    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"
+"       &nbsp;&nbsp;<strong>REFERENCES</strong><br />\n"
+"       &nbsp;&nbsp;Order number: <strong>${object.name}</strong><br />\n"
+"       &nbsp;&nbsp;Order total: <strong>${object.amount_total} ${object.pricelist_id.currency_id.name}</strong><br />\n"
+"       &nbsp;&nbsp;Order date:  ${format_tz(object.date_order, tz=user.tz, context={'lang':object.partner_id.lang})}<br />\n"
+"       % if object.validity_date and object.state in ('draft', 'sent'):\n"
+"       &nbsp;&nbsp;Expiration date: ${object.validity_date}<br />\n"
+"       % endif\n"
+"       % if object.origin:\n"
+"       &nbsp;&nbsp;Order reference: ${object.origin}<br />\n"
+"       % endif\n"
+"       % if object.client_order_ref:\n"
+"       &nbsp;&nbsp;Your reference: ${object.client_order_ref}<br />\n"
+"       % endif\n"
+"       % if object.user_id:\n"
+"       &nbsp;&nbsp;Your contact: <a href=\"mailto:${object.user_id.email or ''}?subject=Order%20${object.name}\">${object.user_id.name}</a>\n"
+"       % endif\n"
+"    </p>\n"
+"\n"
+"    <% set signup_url = object.get_signup_url() %>\n"
+"    % if signup_url and object.amount_total > 0 :\n"
+"    <p>\n"
+"    You can access this document and pay online via our Customer Portal:\n"
+"    </p>\n"
+"        <a style=\"display:block; width: 150px; height:20px; margin-left: 120px; color: #DDD; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #8E0000; border-radius: 5px 5px; background-repeat: repeat no-repeat;\"\n"
+"           href=\"${signup_url}\">View ${object.state in ('draft', 'sent') and 'Quotation' or 'Order'}</a>\n"
+"    % endif\n"
+"\n"
+"    % if object.paypal_url and object.amount_total > 0 :\n"
+"    <br/>\n"
+"    <p>It is also possible to directly pay with Paypal:</p>\n"
+"        <a style=\"margin-left: 120px;\" href=\"${object.paypal_url}\">\n"
+"            <img class=\"oe_edi_paypal_button\" src=\"/sale/static/img/btn_paynowcc_lg.gif\"/>\n"
+"        </a>\n"
+"    % endif\n"
+"\n"
+"    <br/>\n"
+"    <p>If you have any question, do not hesitate to contact us.</p>\n"
+"    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>\n"
+"    <br/>\n"
+"    <br/>\n"
+"    <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"        <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"            <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"    </div>\n"
+"    <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"            ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"        </span>\n"
+"        % if object.company_id.phone:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"            </div>\n"
+"        % endif\n"
+"        % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"            </div>\n"
+"        % endif\n"
+"        <p></p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); \">\n"
+"\n"
+"    <p>Witaj ${object.partner_id.name},</p>\n"
+"    \n"
+"    <p>Tutaj jest ${object.state in ('draft', 'sent') and 'twoja oferta' or 'twoje potwierdzenie zamówienia'} od ${object.company_id.name}: </p>\n"
+"\n"
+"    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"
+"       &nbsp;&nbsp;<strong>ODNOŚNIKI</strong><br />\n"
+"       &nbsp;&nbsp;Numer zamówienia: <strong>${object.name}</strong><br />\n"
+"       &nbsp;&nbsp;Wartość zamówienia: <strong>${object.amount_total} ${object.pricelist_id.currency_id.name}</strong><br />\n"
+"       &nbsp;&nbsp;Data zamówienia:  ${format_tz(object.date_order, tz=user.tz, context={'lang':object.partner_id.lang})}<br />\n"
+"       % if object.validity_date and object.state in ('draft', 'sent'):\n"
+"       &nbsp;&nbsp;Data wygaśnięcia: ${object.validity_date}<br />\n"
+"       % endif\n"
+"       % if object.origin:\n"
+"       &nbsp;&nbsp;Odnośnik zamówienia: ${object.origin}<br />\n"
+"       % endif\n"
+"       % if object.client_order_ref:\n"
+"       &nbsp;&nbsp;Twój odnośnik: ${object.client_order_ref}<br />\n"
+"       % endif\n"
+"       % if object.user_id:\n"
+"       &nbsp;&nbsp;Twój kontakt: <a href=\"mailto:${object.user_id.email or ''}?subject=Order%20${object.name}\">${object.user_id.name}</a>\n"
+"       % endif\n"
+"    </p>\n"
+"\n"
+"    <% set signup_url = object.get_signup_url() %>\n"
+"    % if signup_url and object.amount_total > 0 :\n"
+"    <p>\n"
+"    Możesz skorzystać z dostępu do tego dokumetu przez naszą platformę:\n"
+"    </p>\n"
+"        <a style=\"display:block; width: 150px; height:20px; margin-left: 120px; color: #DDD; font-family: 'Lucida Grande', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-align: center; text-decoration: none !important; line-height: 1; padding: 5px 0px 0px 0px; background-color: #8E0000; border-radius: 5px 5px; background-repeat: repeat no-repeat;\"\n"
+"           href=\"${signup_url}\">Zobacz ${object.state in ('draft', 'sent') and 'Ofertę' or 'Zamówienie'}</a>\n"
+"    % endif\n"
+"\n"
+"    % if object.paypal_url and object.amount_total > 0 :\n"
+"    <br/>\n"
+"    <p>Także jest możliwe opłacenie bezpośrednio przez PayPala:</p>\n"
+"        <a style=\"margin-left: 120px;\" href=\"${object.paypal_url}\">\n"
+"            <img class=\"oe_edi_paypal_button\" src=\"/sale/static/img/btn_paynowcc_lg.gif\"/>\n"
+"        </a>\n"
+"    % endif\n"
+"\n"
+"    <br/>\n"
+"    <p>Jeśli masz jakiekolwiek pytania, nie wahaj się z nami skontaktować.</p>\n"
+"    <p>Dziękujemy za wybranie ${object.company_id.name or 'us'}!</p>\n"
+"    <br/>\n"
+"    <br/>\n"
+"    <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: #8E0000; border-top-left-radius: 5px 5px; border-top-right-radius: 5px 5px; background-repeat: repeat no-repeat;\">\n"
+"        <h3 style=\"margin: 0px; padding: 2px 14px; font-size: 12px; color: #DDD;\">\n"
+"            <strong style=\"text-transform:uppercase;\">${object.company_id.name}</strong></h3>\n"
+"    </div>\n"
+"    <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: 16px; background-color: #F2F2F2;\">\n"
+"        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
+"            ${object.company_id.partner_id.sudo().with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"        </span>\n"
+"        % if object.company_id.phone:\n"
+"            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; \">\n"
+"                Telefon:&nbsp; ${object.company_id.phone}\n"
+"            </div>\n"
+"        % endif\n"
+"        % if object.company_id.website:\n"
+"            <div>\n"
+"                Strona www :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"            </div>\n"
+"        % endif\n"
+"        <p></p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+
+#. module: kams_erp
+#: model:mail.template,report_name:kams_erp.email_template_edi_sale
+msgid "${(object.name or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}"
+msgstr "${(object.name or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}"
+
+#. module: kams_erp
+#: model:mail.template,subject:kams_erp.email_template_edi_sale
+msgid "${object.company_id.name|safe} ${object.state in ('draft', 'sent') and 'Quotation' or 'Order'} (Ref ${object.name or 'n/a' })"
+msgstr "${object.company_id.name|safe} ${object.state in ('draft', 'sent') and 'Oferta' or 'Zamówienie'} (Odn. ${object.name or 'n/a' })"
+
+#. module: kams_erp
+#: model:mail.template,subject:kams_erp.email_template_edi_invoice
+msgid "${object.company_id.name|safe} Invoice (Ref ${object.number or 'n/a' })"
+msgstr "${object.company_id.name|safe} Faktura (Odn. ${object.number or 'n/a' })"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_form
+msgid "<strong>Warning</strong>: adding or deleting attributes\n"
+"                            will delete and recreate existing variants and lead\n"
+"                            to the loss of their possible customizations."
+msgstr "<strong>Uwaga</strong>: dodając albo usuwając atrybuty\n"
+"                            usunie a natępnie odtworzy istniejący już wariant\n"
+"                            co może doprowadzić ewentualnie do ustraty ich dostosowań."
+
+#. module: kams_erp
+#: code:addons/kams_erp/models/odoo/kams_erp_models.py:319
+#: sql_constraint:sale.order:0
+#, python-format
+msgid "A unique_number can only be assigned to one order !"
+msgstr "'unique_number' może być przypisany tylko do jednego zamówienia!"
+
+#. module: kams_erp
+#: code:addons/kams_erp/models/odoo/kams_erp_models.py:24
+#: sql_constraint:product.template:0
+#, python-format
+msgid "A unique_product_number can only be assigned to one product !"
+msgstr "'unique_product_number' może być przypisany tylko do jedengo produktu!"
+
+#. module: kams_erp
+#: selection:sale.order.status,name:0
+msgid "Aborted"
+msgstr "Odrzucono"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_product_product_price_kqs
+msgid "Base price to compute the customer price. Sometimes called the catalog price."
+msgstr "Cena podstawowa do obliczenia ceny dla klienta. Czasem zwana ceną katalogową."
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.product_category_form_view
+msgid "Category Type"
+msgstr "Typ Kategorii"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.product_category_form_view
+msgid "Category name"
+msgstr "Nazwa kategorii"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_template_tree
+msgid "Cena Internetowa"
+msgstr "Cena Internetowa"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_template_tree
+#: model:ir.ui.view,arch_db:kams_erp.view_template_shop_price_kanban
+msgid "Cena Sklepowa"
+msgstr "Cena Sklepowa"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_category_tree
+msgid "Cena internetowa"
+msgstr "Cena internetowa"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_kanban
+#: model:ir.ui.view,arch_db:kams_erp.view_template_shop_price_kanban
+msgid "Cena internetowa:"
+msgstr "Cena internetowa:"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_category_tree
+msgid "Cena sklepowa"
+msgstr "Cena sklepowa"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_kanban
+#: model:ir.ui.view,arch_db:kams_erp.view_template_shop_price_kanban
+msgid "Cena sklepowa:"
+msgstr "Cena sklepowa:"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Company"
+msgstr "Firma"
+
+#. module: kams_erp
+#: selection:sale.order.status,name:0
+msgid "Complete"
+msgstr "Zrealizowane"
+
+#. module: kams_erp
+#: selection:sale.order.status,type:0
+msgid "complete"
+msgstr "Zrealizowane"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,help:kams_erp.categories_list_action
+msgid "Create the first category"
+msgstr "Stwórz pierwszą kategorię"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,help:kams_erp.manufacturer_list_action
+msgid "Create the first manufacturer"
+msgstr "Stwórz pierwszego producenta"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_create_uid
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date_create_uid
+msgid "Created by"
+msgstr "Utworzone przez"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_create_date
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date_create_date
+msgid "Created on"
+msgstr "Utworzono"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_product_orders_tree
+msgid "Data"
+msgstr "Data"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_stock_quant_form
+msgid "Destination Location Zone"
+msgstr "Strefa docelowa"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date_display_name
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_display_name
+msgid "Display Name"
+msgstr "Wyświetlana nazwa"
+
+#. module: kams_erp
+#: selection:sale.order.status,name:0
+msgid "Excepted"
+msgstr "Spodziewany"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Filters"
+msgstr "Filtry"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_product_category_kqs_original_id
+msgid "Gives the original KQS id of category."
+msgstr "Daje orginalny KQS id kategorii."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_res_partner_kqs_original_id
+msgid "Gives the original KQS id of manufacturer."
+msgstr "Daje orginalny KQS id producenta."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_product_attribute_kqs_original_id
+#: model:ir.model.fields,help:kams_erp.field_product_attribute_value_kqs_original_id
+#: model:ir.model.fields,help:kams_erp.field_product_supplierinfo_kqs_original_id
+msgid "Gives the original KQS id of supplier."
+msgstr "Daje orginalny KQS id dostawcy."
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Group by..."
+msgstr "Grupuj wg..."
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_stock_quant_form
+msgid "History"
+msgstr "Historia"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date_id
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_id
+msgid "ID"
+msgstr "ID"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_category_tree
+msgid "Ilość Na Stanie"
+msgstr "Ilość Na Stanie"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_product_supplierinfo
+msgid "Information about a product vendor"
+msgstr "informacja o dostawcy produktu"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Internal Locations"
+msgstr "Wewnętrzne strefy magazynowe"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_stock_quant_pivot
+msgid "Inventory"
+msgstr "Inwentaryzacja"
+
+#. module: kams_erp
+#: selection:sale.order,document_type:0
+msgid "Invoice"
+msgstr "Faktura"
+
+#. module: kams_erp
+#: model:mail.template,report_name:kams_erp.email_template_edi_invoice
+msgid "Invoice_${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}"
+msgstr "Faktura_${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'szkic' or ''}"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_product_category_amount_of_product
+msgid "Kind of products"
+msgstr "Rodzaj produktów"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status___last_update
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date___last_update
+msgid "Last Modified on"
+msgstr "Ostatnio modyfikowano"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date_write_uid
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_write_uid
+msgid "Last Updated by"
+msgstr "Ostatnio modyfikowane przez"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date_write_date
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_write_date
+msgid "Last Updated on"
+msgstr "Ostatnia zmiana"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Location"
+msgstr "Strefa"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Lot"
+msgstr "Partia"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,name:kams_erp.manufacturer_list_action
+#: model:ir.ui.menu,name:kams_erp.manufacturer_list
+msgid "Manufacturer"
+msgstr "Producent"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Negative"
+msgstr "Ujemny"
+
+#. module: kams_erp
+#: selection:sale.order.status,name:0
+msgid "None"
+msgstr "Brak"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_line_order_status_date
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date_order_status_date
+msgid "Order Date"
+msgstr "Data zamówienia"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_name
+msgid "Order Status"
+msgstr "Stan zamówienia"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_line_status_id
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_status_date_name
+msgid "Order status"
+msgstr "Status zamówienia"
+
+#. module: kams_erp
+#: selection:sale.order.status,name:0
+msgid "Ordered"
+msgstr "Zamówione"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.orders
+msgid "Orders"
+msgstr "Zamówienia"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.product_orders_status
+#: model:ir.ui.view,arch_db:kams_erp.view_product_orders_status_form
+#: model:ir.ui.view,arch_db:kams_erp.view_product_orders_status_tree
+msgid "Orders status"
+msgstr "Status zamówienia"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_product_attribute_kqs_original_id
+#: model:ir.model.fields,field_description:kams_erp.field_product_attribute_value_kqs_original_id
+#: model:ir.model.fields,field_description:kams_erp.field_product_category_kqs_original_id
+#: model:ir.model.fields,field_description:kams_erp.field_product_supplierinfo_kqs_original_id
+#: model:ir.model.fields,field_description:kams_erp.field_res_partner_kqs_original_id
+msgid "Original KQS id"
+msgstr "Originalny KQS id"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_mail_mail
+msgid "Outgoing Mails"
+msgstr "Wychodzace"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Owner"
+msgstr "Właściciel"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Package"
+msgstr "Opakowanie"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_category_tree
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_sale
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_template_tree
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_tree
+msgid "Picture"
+msgstr "Picture"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Positive"
+msgstr "Dodatni"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_product_product
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_template_tree
+msgid "Product"
+msgstr "Produkt"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_product_attribute
+msgid "Product Attribute"
+msgstr "Atrybut produktu"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,name:kams_erp.categories_list_action
+#: model:ir.ui.view,arch_db:kams_erp.product_category_list_view
+#: model:ir.ui.view,arch_db:kams_erp.product_category_search_view
+msgid "Product Categories"
+msgstr "Kategorie produktów"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_product_category
+msgid "Product Category"
+msgstr "Kategoria Produktu"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_product_template
+#: model:ir.ui.view,arch_db:kams_erp.product_search_form_view
+msgid "Product Template"
+msgstr "Szablon produktu"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_product_category_product_ids
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_category_tree
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_sale
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_tree
+msgid "Products"
+msgstr "Produkty"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.categories_list
+msgid "Products categories"
+msgstr "Kategorie produktów"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.product_orders
+#: model:ir.ui.view,arch_db:kams_erp.view_product_orders_form
+#: model:ir.ui.view,arch_db:kams_erp.view_product_orders_tree
+msgid "Products in orders"
+msgstr "Produkty w zamówieniu"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,name:kams_erp.product_orders_action
+#: model:ir.actions.act_window,name:kams_erp.product_orders_status_action
+msgid "Products orders"
+msgstr "Zamówione produkty"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,name:kams_erp.stock_quant_list_action
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+#: model:ir.ui.view,arch_db:kams_erp.view_stock_quant_form
+#: model:ir.ui.view,arch_db:kams_erp.view_stock_quant_graph_value
+#: model:ir.ui.view,arch_db:kams_erp.view_stock_quant_tree
+msgid "Quants"
+msgstr "Kwanty"
+
+#. module: kams_erp
+#: selection:sale.order.status,name:0
+msgid "Ready"
+msgstr "Gotowy"
+
+#. module: kams_erp
+#: selection:sale.order,document_type:0
+msgid "Receipt"
+msgstr "Paragon"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_line_sale_order_status_date_id
+msgid "Sale Order Status Date"
+msgstr "Data statusu zamówienia"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_sale_order
+msgid "Sales Order"
+msgstr "Zamówienie sprzedaży"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Pozycja zamówienia sprzedaży"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_product_product_price_subiekt
+#: model:ir.model.fields,field_description:kams_erp.field_product_template_price_subiekt
+msgid "Shop Price"
+msgstr "Cena sklepowa"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_stock_quant_form
+msgid "Source Location Zone"
+msgstr "Strefa źródłowa"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.sale_order_kams_erp_form_view
+#: model:ir.ui.view,arch_db:kams_erp.view_product_orders_form
+#: model:ir.ui.view,arch_db:kams_erp.view_product_orders_tree
+msgid "Status"
+msgstr "Stan"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.stock_quant_list
+msgid "Stock Quant"
+msgstr "Ilości magazynowe"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,help:kams_erp.product_orders_action
+#: model:ir.actions.act_window,help:kams_erp.product_orders_status_action
+#: model:ir.actions.act_window,help:kams_erp.stock_quant_list_action
+msgid "This analysis gives you a fast overview on the current stock level of your products and\n"
+"                their current inventory value."
+msgstr "Ta analiza daje Ci szybki podgląd na obecny stan produktów\n"
+"               i ich obecnej wartości."
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_template_description_form
+msgid "This note will be displayed on the quotations."
+msgstr "Ta notatka będzie wyświetlana na ofertach cenowych."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_product_product_total_amount_of_attribute_line
+msgid "Total amount of this kind product"
+msgstr "Suma produktów tej samej kategorii"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.quant_search_view
+msgid "Transit Locations"
+msgstr "Strefa tranzytowa"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_document_type
+msgid "Type"
+msgstr "Typ"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_product_product_unique_product_number
+#: model:ir.model.fields,field_description:kams_erp.field_product_template_unique_product_number
+msgid "Unique Product Number"
+msgstr "Uniklany Numer Produktu"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_unique_number
+msgid "Unique number"
+msgstr "Unikalny numer"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_form
+#: model:ir.ui.view,arch_db:kams_erp.view_kams_erp_product_kanban
+msgid "Variants"
+msgstr "Warianty"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_product_product_price_kqs
+msgid "Web Price"
+msgstr "Cena internetowa"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_sale_order_customer_ip
+msgid "customer IP address"
+msgstr "Adres IP klienta"
+
+#. module: kams_erp
+#: model:ir.ui.view,arch_db:kams_erp.product_category_form_view
+msgid "e.g. Lamps"
+msgstr "n.p. Lampy"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_kams_erp_attribute
+msgid "kams_erp.attribute"
+msgstr "kams_erp.attribute"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_kams_erp_attribute_value
+msgid "kams_erp.attribute.value"
+msgstr "kams_erp.attribute.value"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_kams_erp_category
+msgid "kams_erp.category"
+msgstr "kams_erp.category"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_kams_erp_manufacturer
+msgid "kams_erp.manufacturer"
+msgstr "kams_erp.manufacturer"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_kams_erp_product
+msgid "kams_erp.product"
+msgstr "kams_erp.product"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_kams_erp_supplier
+msgid "kams_erp.supplier"
+msgstr "kams_erp.supplier"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_product_attribute_value
+msgid "product.attribute.value"
+msgstr "product.attribute.value"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_sale_order_status
+msgid "sale.order.status"
+msgstr "sale.order.status"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_sale_order_status_date
+msgid "sale.order.status.date"
+msgstr "sale.order.status.date"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_sale_order_status_datetime
+msgid "sale.order.status.datetime"
+msgstr "sale.order.status.datetime"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_res_partner_product_ids
+msgid "unknown"
+msgstr "nieznane"

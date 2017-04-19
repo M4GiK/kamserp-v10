@@ -1,0 +1,539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0087)http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link rel="pingback" href="http://lifeofageekadmin.com/xmlrpc.php">
+
+<title>How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin</title>
+
+<!-- This site is optimized with the Yoast SEO Premium plugin v3.2.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit">
+<meta name="robots" content="noodp">
+<link rel="canonical" href="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit">
+<meta name="twitter:title" content="How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin">
+<meta name="twitter:site" content="@NewlifeMark">
+<meta name="twitter:image" content="http://lifeofageekadmin.com/wp-content/uploads/2013/10/tux1.jpg">
+<meta name="twitter:creator" content="@NewlifeMark">
+<meta property="DC.date.issued" content="2014-11-11T20:19:12+00:00">
+<!-- / Yoast SEO Premium plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Life of a Geek Admin » Feed" href="http://lifeofageekadmin.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Life of a Geek Admin » Comments Feed" href="http://lifeofageekadmin.com/comments/feed/">
+
+<script type="text/javascript" async="" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/ga.js"></script><script>
+var MP3jPLAYLISTS = [];
+var MP3jPLAYERS = [];
+</script>
+<link rel="alternate" type="application/rss+xml" title="Life of a Geek Admin » How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit Comments Feed" href="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/lifeofageekadmin.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.2"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/wp-emoji-release.min.js" type="text/javascript"></script>
+				<link rel="stylesheet" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/style-Light-Red.css" type="text/css" media="screen">
+	<meta content="Bold v.6.5.4" name="generator"><style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wp-syntax-css-css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/wp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="et-shortcodes-css-css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/shortcodes.css" type="text/css" media="all">
+<link rel="stylesheet" id="mp3-jplayer-css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/dark.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/jetpack.css" type="text/css" media="all">
+<link rel="stylesheet" id="magnific_popup-css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/magnific_popup.css" type="text/css" media="screen">
+<link rel="stylesheet" id="et_page_templates-css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/page_templates.css" type="text/css" media="screen">
+<!-- This site uses the Google Analytics by MonsterInsights plugin v5.5 - Universal disabled - https://www.monsterinsights.com/ -->
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-10244060-2']);
+	_gaq.push(['_gat._forceSSL']);
+	_gaq.push(['_trackPageview']);
+
+	(function () {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/jquery.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/jquery-migrate.min.js"></script>
+<link rel="https://api.w.org/" href="http://lifeofageekadmin.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://lifeofageekadmin.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://lifeofageekadmin.com/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="http://wp.me/p1MKY7-Bx">
+<link rel="alternate" type="application/json+oembed" href="http://lifeofageekadmin.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flifeofageekadmin.com%2Finstall-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://lifeofageekadmin.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flifeofageekadmin.com%2Finstall-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit%2F&amp;format=xml">
+<link type="text/css" rel="stylesheet" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/easy-review-builder.css"><link rel="stylesheet" type="text/css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/microkids-related-posts-default.css">
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<link rel="shortcut icon" href="http://lifeofageekadmin.com/wp-content/uploads/2013/12/favicon.ico"><!-- All in one Favicon 4.3 --><link rel="shortcut icon" href="http://lifeofageekadmin.com/wp-content/uploads/2012/04/favicon1.ico">
+<link rel="apple-touch-icon" href="http://lifeofageekadmin.com/wp-content/uploads/2012/04/favicon3.ico">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit">
+<meta property="og:url" content="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/">
+<meta property="og:description" content="Microsoft’s SQL drivers can not use the 2.2.14 unixODBC installed with RedHat 6. It requires 2.3.0 which requires compiling and installing from source. First download the latest unixODBC from . Put…">
+<meta property="article:published_time" content="2014-11-11T20:19:12+00:00">
+<meta property="article:modified_time" content="2014-11-11T20:19:12+00:00">
+<meta property="og:site_name" content="Life of a Geek Admin">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@NewlifeMark">
+	<style type="text/css">
+		#et_pt_portfolio_gallery { margin-left: -34px; }
+		.et_pt_portfolio_item { margin-left: 30px; }
+		.et_portfolio_small { margin-left: -38px !important; }
+		.et_portfolio_small .et_pt_portfolio_item { margin-left: 30px !important; }
+		.et_portfolio_large { margin-left: -20px !important; }
+		.et_portfolio_large .et_pt_portfolio_item { margin-left: 4px !important; }
+	</style>
+<style type="text/css" id="et-custom-css">
+.titles-featured a {
+font-size: 20px !important;
+}
+</style><meta data-pso-pv="1.2.1" data-pso-pt="singlePost" data-pso-th="0c39ec4896ac26cab777ab2a835cffa7"><script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script pagespeed_no_defer="" data-pso-version="20160525_220723">window.dynamicgoogletags={config:[]};dynamicgoogletags.config=["ca-pub-0282544365017537",[[]],[[[],[],[]]],"WordPressSinglePost","3497060466",,0.01,,[,1209600000],0.01,0,,,"http://lifeofageekadmin.com"];(function(){var h,r=this,aa=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";
+else if("function"==b&&"undefined"==typeof a.call)return"object";return b},t=function(a){return"number"==typeof a},ba=function(a,b){var c=Array.prototype.slice.call(arguments,1);return function(){var b=c.slice();b.push.apply(b,arguments);return a.apply(this,b)}},u=function(a,b){function c(){}c.prototype=b.prototype;a.Da=b.prototype;a.prototype=new c;a.prototype.constructor=a;a.Fa=function(a,c,f){for(var g=Array(arguments.length-2),k=2;k<arguments.length;k++)g[k-2]=arguments[k];return b.prototype[c].apply(a,
+g)}};var ca=String.prototype.trim?function(a){return a.trim()}:function(a){return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g,"")},da=function(a,b){return a<b?-1:a>b?1:0};var ea=Array.prototype.filter?function(a,b,c){return Array.prototype.filter.call(a,b,c)}:function(a,b,c){for(var d=a.length,e=[],f=0,g="string"==typeof a?a.split(""):a,k=0;k<d;k++)if(k in g){var l=g[k];b.call(c,l,k,a)&&(e[f++]=l)}return e},fa=Array.prototype.map?function(a,b,c){return Array.prototype.map.call(a,b,c)}:function(a,b,c){for(var d=a.length,e=Array(d),f="string"==typeof a?a.split(""):a,g=0;g<d;g++)g in f&&(e[g]=b.call(c,f[g],g,a));return e};var v;a:{var ga=r.navigator;if(ga){var ha=ga.userAgent;if(ha){v=ha;break a}}v=""}var w=function(a){return-1!=v.indexOf(a)};var ia=function(a,b){for(var c in a)Object.prototype.hasOwnProperty.call(a,c)&&b.call(void 0,a[c],c,a)},ja=function(a,b){var c=a.length;if(0==c)return 0;for(var d=b||305419896,e=0;e<c;e++)d^=(d<<5)+(d>>2)+a.charCodeAt(e)&4294967295;return 0<d?d:4294967296+d};var ka=function(a,b,c,d,e){this.ea=c||2048;this.Z=a||"&";this.ma=b||",$";this.R=void 0!==d?d:"trn";this.Ea=e||null;this.T={};this.wa=0;this.L=[]},na=function(a,b,c,d){b=b+"//"+c+d;var e=la(a)-d.length-0;if(0>e)return"";a.L.sort(function(a,b){return a-b});d=null;c="";for(var f=0;f<a.L.length;f++)for(var g=a.L[f],k=a.T[g],l=0;l<k.length;l++){var m=ma(k[l],a.Z,a.ma);if(m){m=c+m;if(e>=m.length){e-=m.length;b+=m;c=a.Z;break}null==d&&(d=g)}}e="";a.R&&null!=d&&(e=c+a.R+"="+(a.Ea||d));return b+e+""},la=function(a){if(!a.R)return a.ea;
+var b=1,c;for(c in a.T)b=c.length>b?c.length:b;return a.ea-a.R.length-b-a.Z.length-1},ma=function(a,b,c,d,e){var f=[];ia(a,function(a,k){var l=oa(a,b,c,d,e);l&&f.push(k+"="+l)});return f.join(b)},oa=function(a,b,c,d,e){if(null==a)return"";b=b||"&";c=c||",$";"string"==typeof c&&(c=c.split(""));if(a instanceof Array){if(d=d||0,d<c.length){for(var f=[],g=0;g<a.length;g++)f.push(oa(a[g],b,c,d+1,e));return f.join(c[d])}}else if("object"==typeof a)return e=e||0,2>e?encodeURIComponent(ma(a,b,c,d,e+1)):"...";
+return encodeURIComponent(String(a))};var ra=function(a,b,c,d){var e=pa;try{var f;b instanceof ka?f=b:(f=new ka,ia(b,function(a,b){var c=f,d=c.wa++,e={};e[b]=a;e=[e];c.L.push(d);c.T[d]=e}));if((c?e.Ba:Math.random())<(d||e.na)){var g=na(f,e.ya,e.pa,e.xa+a+"&");qa(g)}}catch(k){}},qa=function(a){r.google_image_requests||(r.google_image_requests=[]);var b=r.document.createElement("img");b.src=a;r.google_image_requests.push(b)};var sa=w("Opera"),x=w("Trident")||w("MSIE"),ta=w("Edge"),ua=w("Gecko")&&!(-1!=v.toLowerCase().indexOf("webkit")&&!w("Edge"))&&!(w("Trident")||w("MSIE"))&&!w("Edge"),va=-1!=v.toLowerCase().indexOf("webkit")&&!w("Edge"),wa=function(){var a=r.document;return a?a.documentMode:void 0},xa;
+a:{var ya="",za=function(){var a=v;if(ua)return/rv\:([^\);]+)(\)|;)/.exec(a);if(ta)return/Edge\/([\d\.]+)/.exec(a);if(x)return/\b(?:MSIE|rv)[: ]([^\);]+)(\)|;)/.exec(a);if(va)return/WebKit\/(\S+)/.exec(a);if(sa)return/(?:Version)[ \/]?(\S+)/.exec(a)}();za&&(ya=za?za[1]:"");if(x){var Aa=wa();if(null!=Aa&&Aa>parseFloat(ya)){xa=String(Aa);break a}}xa=ya}
+var Ba=xa,Ca={},Da=function(a){if(!Ca[a]){for(var b=0,c=ca(String(Ba)).split("."),d=ca(String(a)).split("."),e=Math.max(c.length,d.length),f=0;0==b&&f<e;f++){var g=c[f]||"",k=d[f]||"",l=RegExp("(\\d*)(\\D*)","g"),m=RegExp("(\\d*)(\\D*)","g");do{var p=l.exec(g)||["","",""],n=m.exec(k)||["","",""];if(0==p[0].length&&0==n[0].length)break;b=da(0==p[1].length?0:parseInt(p[1],10),0==n[1].length?0:parseInt(n[1],10))||da(0==p[2].length,0==n[2].length)||da(p[2],n[2])}while(0==b)}Ca[a]=0<=b}},Ea=r.document,
+Fa=Ea&&x?wa()||("CSS1Compat"==Ea.compatMode?parseInt(Ba,10):5):void 0;var Ga;if(!(Ga=!ua&&!x)){var Ha;if(Ha=x)Ha=9<=Number(Fa);Ga=Ha}Ga||ua&&Da("1.9.1");x&&Da("9");var Ia=function(a,b,c,d){this.top=a;this.right=b;this.bottom=c;this.left=d};Ia.prototype.floor=function(){this.top=Math.floor(this.top);this.right=Math.floor(this.right);this.bottom=Math.floor(this.bottom);this.left=Math.floor(this.left);return this};var Ja=window;var pa;pa=new function(){this.ya="http:"===Ja.location.protocol?"http:":"https:";this.pa="pagead2.googlesyndication.com";this.xa="/pagead/gen_204?id=";this.na=.01;this.Ba=Math.random()};var y=function(){},Ka="function"==typeof Uint8Array,A=function(a,b,c){a.b=null;b||(b=[]);a.Ha=void 0;a.M=-1;a.g=b;a:{if(a.g.length){b=a.g.length-1;var d=a.g[b];if(d&&"object"==typeof d&&"array"!=aa(d)){a.P=b-a.M;a.H=d;break a}}a.P=Number.MAX_VALUE}a.Ga={};if(c)for(b=0;b<c.length;b++)d=c[b],d<a.P?(d+=a.M,a.g[d]=a.g[d]||z):a.H[d]=a.H[d]||z},z=[],B=function(a,b){if(b<a.P){var c=b+a.M,d=a.g[c];return d===z?a.g[c]=[]:d}d=a.H[b];return d===z?a.H[b]=[]:d},Ma=function(a){a=B(La,a);return null==a?a:+a},C=
+function(a,b,c){b<a.P?a.g[b+a.M]=c:a.H[b]=c},D=function(a,b,c){a.b||(a.b={});if(!a.b[c]){var d=B(a,c);d&&(a.b[c]=new b(d))}return a.b[c]},E=function(a,b,c){a.b||(a.b={});if(!a.b[c]){for(var d=B(a,c),e=[],f=0;f<d.length;f++)e[f]=new b(d[f]);a.b[c]=e}b=a.b[c];b==z&&(b=a.b[c]=[]);return b},Na=function(a,b,c){a.b||(a.b={});c=c||[];for(var d=[],e=0;e<c.length;e++)d[e]=c[e].g;a.b[b]=c;C(a,b,d)};y.prototype.toString=function(){return this.g.toString()};
+var F=function(a){return new a.constructor(Oa(a.g))},Oa=function(a){var b;if("array"==aa(a)){for(var c=Array(a.length),d=0;d<a.length;d++)null!=(b=a[d])&&(c[d]="object"==typeof b?Oa(b):b);return c}if(Ka&&a instanceof Uint8Array)return new Uint8Array(a);c={};for(d in a)null!=(b=a[d])&&(c[d]="object"==typeof b?Oa(b):b);return c};var G=function(a){this.fa={};this.fa.c=a;this.o=[];this.u=null;this.A=[];this.ca=0};G.prototype.i=function(a){for(var b=0;b<this.o.length;b++)if(this.o[b]==a)return this;this.o.push(a);return this};var Pa=function(a,b){a.u=a.u?a.u:b;return a};G.prototype.D=function(a){for(var b=0;b<this.A.length;b++)if(this.A[b]==a)return this;this.A.push(a);return this};
+G.prototype.getData=function(a){var b=this.fa,c={},d;for(d in b)c[d]=b[d];0<this.ca&&(c.t=this.ca);c.err=this.o.join();c.warn=this.A.join();if(this.u){c.excp_n=this.u.name;c.excp_m=this.u.message&&this.u.message.substring(0,512);if(b=this.u.stack){d=this.u.stack;try{-1==d.indexOf("")&&(d="\n"+d);for(var e;d!=e;)e=d,d=d.replace(/((https?:\/..*\/)[^\/:]*:\d+(?:.|\n)*)\2/,"$1");b=d.replace(/\n */g,"\n")}catch(f){b=""}}c.excp_s=b}c.w=0<a.innerWidth?a.innerWidth:null;c.h=0<a.innerHeight?a.innerHeight:
+null;return c};var Ra=function(a,b){Qa(a,a.sa,a.W,b)},Qa=function(a,b,c,d){var e=d.u;d=d.getData(a.K);a.ua?(d.type=b,a.K.console.log(d),e&&a.K.console.error(e)):0<c&&ra(b,d,"jserror"!=b,c)};var H=function(a){return a.dynamicgoogletags=a.dynamicgoogletags||{}};var I=function(a){A(this,a,Sa)};u(I,y);var Sa=[4];I.prototype.v=function(){return F(this)};I.prototype.getId=function(){return B(this,3)};var J=function(a){A(this,a,null)};u(J,y);J.prototype.v=function(){return F(this)};var Ta=function(a){A(this,a,null)};u(Ta,y);Ta.prototype.v=function(){return F(this)};var K=function(a){return D(a,I,1)},L=function(a){A(this,a,Ua)};u(L,y);var Ua=[1];L.prototype.v=function(){return F(this)};L.prototype.j=function(){return E(this,Ta,1)};L.prototype.ha=function(a){Na(this,1,a)};var M=function(a){A(this,a,Va)};u(M,y);var Va=[2];M.prototype.v=function(){return F(this)};M.prototype.da=function(){return B(this,3)};M.prototype.ia=function(a){C(this,3,a)};var Wa=function(a){A(this,a,null)};
+u(Wa,y);Wa.prototype.v=function(){return F(this)};var N=function(a){A(this,a,Xa)};u(N,y);var Xa=[1,2,3];N.prototype.v=function(){return F(this)};N.prototype.j=function(){return E(this,Ta,2)};N.prototype.ha=function(a){Na(this,2,a)};var Za=function(a){A(this,a,Ya)};u(Za,y);var Ya=[3];h=Za.prototype;h.v=function(){return F(this)};h.B=function(){return B(this,1)};h.F=function(){return D(this,L,2)};h.O=function(){return B(this,4)};h.da=function(){return B(this,5)};h.ia=function(a){C(this,5,a)};
+h.N=function(){return D(this,O,9)};var O=function(a){A(this,a,null)};u(O,y);O.prototype.v=function(){return F(this)};var $a=function(a){this.m=a;this.ja=[]};$a.prototype.f=function(){return 0<E(this.m,N,3).length?E(this.m,N,3)[0]:null};var bb=function(a){return"INS"==a.tagName&&ab(a,["adsbygoogle-placeholder"])},ab=function(a,b){for(var c=a.className?a.className.split(/\s+/):[],d={},e=0;e<c.length;++e)d[c[e]]=!0;for(e=0;e<b.length;++e)if(!d[b[e]])return!1;return!0};var cb=function(a){return a.adsbygoogle=a.adsbygoogle||[]};var db=function(a,b){if(!a)return!1;var c;c=b.getComputedStyle?b.getComputedStyle(a,null):a.currentStyle;if(!c)return!1;c=c.cssFloat||c.styleFloat;return"left"==c||"right"==c},eb=function(a){for(a=a.previousSibling;a&&1!=a.nodeType;)a=a.previousSibling;return a?a:null},fb=function(a){return!!a.nextSibling||!!a.parentNode&&fb(a.parentNode)};var ib=function(a,b){var c=b||document,d=null,e=a.getId();if(e)if(d=c.getElementById(e))d=[d];else return[];if(e=B(a,1))if(d){for(var f=[],g=0;g<d.length;++g)d[g].tagName&&d[g].tagName.toUpperCase()==e.toUpperCase()&&f.push(d[g]);d=f}else{d=c.getElementsByTagName(e);e=[];for(f=0;f<d.length;++f)e.push(d[f]);d=e}if((e=B(a,4))&&0<e.length)if(d)for(c=d,d=[],f=0;f<c.length;++f)ab(c[f],e)&&d.push(c[f]);else{if(!c.body)return[];d=gb(e,c.body)}c=B(a,2);if(t(c)&&d)if(0>c&&(c+=d.length),d.length>c)d=[d[c]];
+else return[];c=B(a,5);if(t(c)&&d){e=[];for(f=0;f<d.length;f++)g=hb(d[f]),0>c&&(c+=g.length),0<=c&&c<g.length&&e.push(g[c]);d=e}c=B(a,6);if(void 0!==c&&d)switch(c){case 0:return d.slice(1);case 1:return d.slice(0,d.length-1);case 2:return d.slice(1,d.length-1)}return d?d:[]},hb=function(a){var b=[];a=a.getElementsByTagName("p");for(var c=0;c<a.length;++c)100<=jb(a[c])&&b.push(a[c]);return b},kb=function(a,b){if(a==b)return!0;if(!a||!b||B(a,1)!=B(b,1)||B(a,2)!=B(b,2)||a.getId()!=b.getId()||B(a,7)!=
+B(b,7)||B(a,5)!=B(b,5)||B(a,6)!=B(b,6))return!1;var c=B(a,4),d=B(b,4);if(c||d)if(c&&d&&c.length==d.length)for(var e=0;e<c.length;e++){if(c[e]!=d[e])return!1}else return!1;return!0},jb=function(a){if(3==a.nodeType)return a.length;if(1!=a.nodeType||"SCRIPT"==a.tagName)return 0;for(var b=0,c=0;c<a.childNodes.length;++c)b+=jb(a.childNodes[c]);return b},gb=function(a,b){if(b.getElementsByClassName){for(var c=b.getElementsByClassName(a.join(" ")),d=[],e=0;e<c.length;++e)d.push(c[e]);return d}c=[];ab(b,
+a)&&c.push(b);for(e=0;e<b.childNodes.length;++e)1==b.childNodes[e].nodeType&&(c=c.concat(gb(a,b.childNodes[e])));return c};var lb=function(a){a=a.document;return("CSS1Compat"==a.compatMode?a.documentElement:a.body)||{}},mb=function(a){return void 0===a.pageYOffset?(a.document.documentElement||a.document.body.parentNode||a.document.body).scrollTop:a.pageYOffset};var nb=function(a,b){var c=K(b);if(!c)return null;c=ib(c,a);return 0<c.length?c[0]:null},pb=function(a,b){var c=ob(a,b,!0);return t(c)&&!(c<=lb(a).clientHeight)},qb=function(a,b){return a.body?b-a.body.getBoundingClientRect().top:b},ob=function(a,b,c){if(!c||!t(B(b,8))){var d=nb(a.document,b);if(d){var e=null!=D(b,J,2)?B(D(b,J,2),3):void 0;c=window.document.createElement("div");c.className="googlepublisherpluginad";var f=c.style;f.textAlign="center";f.width="100%";f.height="0px";f.clear=e?"both":
+"none";rb(c,d,B(b,3));d=c.getBoundingClientRect().top+mb(a);c.parentNode.removeChild(c);C(b,8,d)}}b=B(b,8);return t(b)?b-mb(a):null},sb={0:0,1:1,2:2,3:3},tb={0:"auto",1:"horizontal",2:"vertical",3:"rectangle"},ub=function(a,b){a.sort(function(a,d){var e=ob(b,a,!0),e=t(e)?e:Number.POSITIVE_INFINITY,f=ob(b,d,!0),f=t(f)?f:Number.POSITIVE_INFINITY;return e-f})},rb=function(a,b,c){switch(sb[c]){case 0:b.parentNode&&b.parentNode.insertBefore(a,b);break;case 3:if(c=b.parentNode){var d=b.nextSibling;if(d&&
+d.parentNode!=c)for(;d&&8==d.nodeType;)d=d.nextSibling;c.insertBefore(a,d)}break;case 1:b.insertBefore(a,b.firstChild);break;case 2:b.appendChild(a)}bb(b)&&(b.style.display="block")};var Q=function(a){this.a=a;this.l=[];this.ba=0;this.o=[];this.A=[];this.X=null;this.ga=!1},vb=function(a,b){var c=D(a.f(),I,4);if(!(c&&b&&B(b,1)==B(c,1)&&b.getId()==c.getId()&&t(B(b,2))&&t(B(b,5))))return!1;var c=B(c,4),d=B(b,4);if(c.length!=d.length)return!1;for(var e=0;e<c.length;++e)if(d[e]!=c[e])return!1;return!0},wb=function(a){var b=t(void 0)?void 0:20,c=a.f(),d=c.j(),e=D(c,I,4);if(!(a.ga||0>=b)&&e&&0!=ib(e,a.a.document).length){a.ga=!0;for(var c=[],f=0;f<d.length;++f){var g=d[f],k=K(g);if(vb(a,
+k)){var l=B(k,2),k=B(k,5);null!=l&&null!=k&&0<=l&&0<=k&&(!c[l]||B(K(c[l]),5)<k)&&(c[l]=g)}}k=0;d=ib(e,a.a.document);for(l=0;l<c.length&&k<b;++l){var e=k,f=a,m=d[l],g=c[l],k=b-k,p=f.f().j(),n=0;if(m&&g){m=hb(m).length;switch(B(K(g),6)){case 0:case 1:--m;break;case 2:m-=2}for(var q=B(K(g),5)+1;q<m&&n<k;++q){var P=g.v(),xb=K(P);C(xb,5,q);p.push(P);n++}}n&&f.f().ha(p);k=e+n}}};Q.prototype.i=function(a){for(var b=0;b<this.o.length;++b)if(this.o[b]==a)return;this.o.push(a)};
+Q.prototype.D=function(a){for(var b=0;b<this.A.length;++b)if(this.A[b]==a)return;this.A.push(a)};
+var yb=function(a,b,c){var d=sb[B(b,3)],e=nb(a.a.document,b);if(e){var f=K(b)?B(K(b),2):void 0,g;a:{g=a.a;if(null!=f)switch(d){case 0:g=db(eb(e),g);break a;case 3:g=db(e,g);break a;case 2:f=e.lastChild;g=db(f?1==f.nodeType?f:eb(f):null,g);break a}g=!1}if(!(g||!c&&2==d&&!fb(e)||(c=1==d||2==d?e:e.parentNode,c&&!bb(c)&&0>=c.offsetWidth)))a:if(B(b,7))a.D(8);else{b:if(B(b,5))c=B(b,5);else{if(c=R(a).f())if(c=B(c,3),a.ba<c.length){c=c[a.ba++];break b}a.i(4);c=null}if(null!=c){C(b,7,!0);d=[];(g=a.O())&&d.push(g);
+g=R(a).ja;for(f=0;f<g.length;++f)d.push(g[f]);t(B(b,9))&&d.push("pso-lv-"+B(b,9));var k=a.a.document;g=a.B();var f=B(b,6),f=null!=f?tb[f]:f,l=D(b,J,2),m,p,n;l&&(m=B(l,1),p=B(l,2),n=!!B(l,3));var l=c,q=k.createElement("div"),P=q.style;P.textAlign="center";P.width="100%";P.height="auto";P.clear=n?"both":"none";n=k.createElement("ins");k=n.style;k.display="block";k.margin="auto";k.backgroundColor="transparent";m&&(k.marginTop=m);p&&(k.marginBottom=p);q.appendChild(n);q.className="googlepublisherpluginad";
+n.className="adsbygoogle";n.setAttribute("data-ad-client",g);n.setAttribute("data-ad-format",f?f:"auto");n.setAttribute("data-tag-origin","pso");l&&n.setAttribute("data-ad-slot",l);d.length&&n.setAttribute("data-ad-channel",d.join("+"));rb(q,e,B(b,3));try{cb(a.a).push({})}catch(xb){B(b,5)!=c&&a.ba--;C(b,7,!1);a.D(6);q.parentNode&&q.parentNode.removeChild(q);break a}a.l.push(q)}}}},zb=function(a,b){for(var c=Number.POSITIVE_INFINITY,d=0;d<a.l.length;++d)var e=a.l[d].getBoundingClientRect().top,f=a.l[d].getBoundingClientRect().bottom,
+c=Math.min(c,b<e?e-b:f<b?b-f:0);return c},R=function(a){a=H(a.a).ps||null;if(!a)throw Error("No placementState");return a},Ab=function(a,b){var c=R(a).m;if(!c||!c.B())return a.i(5),!1;c=E(c,N,3)[0];return c?B(c,3).length<b?(a.i(4),a.i(5),!1):!0:(a.i(5),!1)};Q.prototype.B=function(){return R(this).m.B()||""};Q.prototype.O=function(){return R(this).m.O()||void 0};Q.prototype.F=function(){return R(this).m.F()||new L};Q.prototype.f=function(){var a=R(this).f();if(!a)throw Error("No mConfig");return a};
+var Bb=function(a){a=B(a.f(),6);return null!=a&&0<a};var Cb=function(){this.I=this.J=this.$=null};var S=function(a){Q.call(this,a)};u(S,Q);S.prototype.apply=function(a){var b;(b=R(this).m)&&b.B()&&b.F()?b=!0:(this.i(5),b=!1);if(b){b=this.F().j();for(var c=0;c<b.length;c++){var d=b[c];B(d,7)||yb(this,d,a)}}};S.prototype.C=function(){return(0==this.F().j().length||0<this.l.length)&&0==this.o.length};var Db=function(a){Q.call(this,a);if(Ab(this,0)){a=this.F().j();for(var b=this.f().j(),c=0;c<a.length;c++){var d=a[c],e;a:{e=d;var f=b;if(e&&K(e))for(var g=0;g<f.length;g++){var k=f[g];if(B(e,3)==B(k,3)&&kb(K(e),K(k))){e=k;break a}}e=null}e&&D(e,J,2)&&(e=D(e,J,2),d.b||(d.b={}),f=e?e.g:e,d.b[2]=e,C(d,2,f))}}};u(Db,S);var Eb=function(a,b){var c=void 0===b.pageXOffset?(b.document.documentElement||b.document.body.parentNode||b.document.body).scrollLeft:b.pageXOffset,d=mb(b);if(a.getBoundingClientRect){var e=a.getBoundingClientRect();return new Ia(e.top+d,e.right+c,e.bottom+d,e.left+c)}e=b.document.createRange();e.selectNodeContents(a);if(e.collapsed)return new Ia(0,0,0,0);e=e.getBoundingClientRect();return new Ia(e.top+d,e.right+c,e.bottom+d,e.left+c)};var Fb={"120x90":!0,"160x90":!0,"180x90":!0,"200x90":!0,"468x15":!0,"728x15":!0};var Gb=function(a,b){var c=a.id;return!!c&&!!c.indexOf&&"function"===typeof c.indexOf&&0===c.indexOf(b)};var Hb=function(a){var b=a.googletag;if(!b||"function"!=typeof b.pubads)return T("div[id^=div-gpt-ad]",a);var c=[];try{for(var d=b.pubads().getSlots(),b=0;b<d.length;b++){var e=d[b].getSlotElementId(),f=a.document.getElementById(e);null!=f&&c.push(f)}}catch(g){ra("ladd_evt",{ok:0,err:g.toString()},!0,.1)}return c},Ib=function(a){var b=T("iframe[id^=aswift_],iframe[id^=google_ads_frame]",a);return ea(b,function(b){if("IFRAME"!=b.tagName&&"INS"!=b.tagName||!Gb(b,"google_ads_frame")&&!Gb(b,"aswift_"))b=
+!1;else{b=Eb(b,a);var d=b.bottom-b.top;b=!(Fb[b.right-b.left+"x"+d]&&50>d)}return b})},Jb=function(a){return T("iframe[id^=aswift_],iframe[id^=google_ads_frame]",a)},T=function(a,b){return fa(b.document.querySelectorAll(a),function(a){return a})},Mb=function(a){this.K=a;this.ta=Hb(a);this.la=T("ins.adsbygoogle",a);this.ka=Jb(a);this.za=Ib(a);this.Aa=T("[__lsu_res=reserved]",a);this.S=[];a=Kb(this);for(var b=0;b<a.length;b++)this.S.push(new Lb(a[b]))},Kb=function(a){return[].concat(a.ta,a.la,a.ka,
+a.Aa)},Lb=function(a){this.qa=a;this.U=null};var U=function(a){Q.call(this,a)};u(U,Q);U.prototype.apply=function(){};U.prototype.C=function(){var a;if(Bb(this)){var b=this.a;a=Hb(b);var c=T("ins.adsbygoogle",b),d=Jb(b),b=T("[__lsu_res=reserved]",b);a=0<[].concat(a,c,d,b).length}else a=!0;return a};var Nb=function(a){Q.call(this,a);this.G=null};u(Nb,Q);
+Nb.prototype.apply=function(a){if(a&&Ab(this,2)){wb(this);a=lb(this.a).clientHeight||640;null==this.G&&(this.G=new Mb(this.a));var b=this.G.za.length;if(!(5<=b)){var b=Math.min(2,5-b),c=this.f().j();ub(c,this.a);for(var d=0;d<c.length&&this.l.length<b;++d){var e=c[d];if(pb(this.a,e)){var f=ob(this.a,e,!0);if(void 0!==f){var g;a:{g=this.G;for(var k=a,l=f,m=0;m<g.S.length;m++){var p=l,n=k,q;q=g.S[m];q.U||(q.U=Eb(q.qa,g.K));q=q.U;if(q.top-n<p&&p<q.bottom+n){g=!0;break a}}g=!1}g||zb(this,f)<a||yb(this,
+e,!0)}}}0==this.l.length&&this.D(1)}}};Nb.prototype.C=function(){return Bb(this)?0<Kb(this.G).length:!0};var Ob=function(a){Q.call(this,a);this.Y=!1};u(Ob,U);
+Ob.prototype.apply=function(a){if(a&&!this.Y){var b;a:{var c=this.a.document;b=c.body;if(a&&b){a=this.B();var d=c.createElement("div");d.className="googlepublisherpluginad";d.style.display="block";c=c.createElement("ins");c.className="adsbygoogle";c.setAttribute("data-ad-client",a);c.setAttribute("data-reactive-ad-format","1");c.setAttribute("data-tag-origin","pso");c.style.display="none";d.appendChild(c);rb(d,b,2);try{cb(this.a).push({})}catch(e){this.D(6);d.parentNode&&d.parentNode.removeChild(d);
+b=5;break a}this.l.push(d);b=0}else b=4}this.Y=0==b}};Ob.prototype.C=function(){return this.Y&&U.prototype.C.call(this)};var Pb=function(a){Q.call(this,a);a=lb(a).clientHeight;this.oa=.1*a;this.va=.75*a};u(Pb,Q);
+Pb.prototype.apply=function(a){if(Ab(this,3)&&!this.C()){wb(this);var b=this.f().j();ub(b,this.a);var c;c=this.oa;var d;d=document;d=d.querySelectorAll?d.querySelectorAll("header,#header,#masthead,.header,.site-header"):[];for(var e=d.length,f=0<e?d[0]:null,g=1;g<e;g++)d[g].getBoundingClientRect().top<f.getBoundingClientRect().top&&(f=d[g]);(d=f)&&(d=d.getBoundingClientRect())&&d.top!=d.bottom&&d.left!=d.right&&(c=Math.min(c,qb(document,d.bottom)));for(d=0;d<b.length&&3>this.l.length;d++){e=b[d];
+var f=c,g=this.a.document,k=ob(this.a,e,!1);!t(k)||qb(g,k)<f?f=!1:(f=zb(this,k),f=this.va<f);f&&(f=pb(this.a,e),g=B(e,6)||0,f&&0==g&&C(e,6,3),!f&&a||yb(this,e,a))}}};Pb.prototype.C=function(){return 3==this.l.length};var V={};V[16]=S;V[17]=S;V[19]=U;V[29]=Nb;V[33]=U;V[30]=Ob;V[28]=Pb;V[34]=Pb;V[32]=Db;V[1]=S;V[8]=U;V[11]=S;var Qb=[19,29,33,30,16,32,17,34],Rb=[16,19,33,30,17,1,6,8,11];var Sb=function(a,b){for(var c=a.google_ad_modifications=a.google_ad_modifications||{},c=c.loeids=c.loeids||[],d=0;d<b.length;d++)c.push(b[d])};var Tb=function(a,b){var c=a.google_ad_modifications=a.google_ad_modifications||{};(c.ad_channels=c.ad_channels||[]).push(b)},Wb=function(a){a+=Ub;var b=ja(a);return((b%512*2+1)*Vb+ja(a,b)%1024)%1024},Xb=function(a,b,c){var d=a.length;c-=0;return 0>c||c>=b*d?null:a[c%d]};var Yb=function(a){return 0>a||99<a?null:10>a?"0"+a:""+a};var Zb=function(a,b,c){this.V=a;this.ra=c?c:new O};Zb.prototype.N=function(){return this.ra||new O};var $b=function(a){if(!t(a))return!1;for(var b=0;b<Qb.length;++b)if(a==Qb[b])return!1;return!0},ec=function(){var a=W,b=ac,c=bc,d=b.f();if(!d)return cc(16);var e=null,f;a:{f=E(d,M,1);for(var g=0;g<f.length;++g){for(var k=!0,l=0;l<Rb.length;++l)B(f[g],4)==Rb[l]&&(k=!1);if(k){f=[];0==d.j().length&&f.push("PsoInvalidVariant");0==B(d,3).length&&f.push("PsoNoAdSlotCodes");break a}}f=[]}if(0==f.length)a:{e=E(d,M,1);f=c.V;if(t(f))for(g=0;g<e.length;g++)if(k=e[g],V[B(k,4)])for(var l=E(k,Wa,2),m=0;m<l.length;m++){var p=
+l[m],n=B(p,1),p=B(p,2);if(t(n)&&t(p)&&f>=n&&f<=p){e=k;break a}}e=null}else for(g=0;g<f.length;++g)b.ja.push(f[g]);if(!e){f=E(d,M,1);e={};for(g=0;g<f.length;g++)e[B(f[g],4)]=!0;f=null;e[19]||e[8]?f=19:e[16]||e[1]?f=16:0<d.j().length&&0<B(d,3).length&&e[34]&&(f=34);null!=f?(e=new M,C(e,6,3),C(e,4,f),16!=f&&19!=f&&e.ia("pso-ama-fallback")):e=null}if(!e)return cc(16);(f=e.da())&&Tb(a,f);f=!0;B(c.N(),2)&&(Date.now?Date.now():+new Date)<B(c.N(),2)||(Tb(a,"pso-ama-exd"),f=!1);B(b.m,11)&&(Tb(a,"pso-ama-stl-tmp"),
+f=!1);f&&Tb(a,"pso-ama-elig");2==B(e,6)&&(b=B(e,1),null!=b&&Sb(a,[""+b]));if(f&&(2==B(e,6)||1==B(e,6))){d=E(d,M,1);if(null===c.V)c=[];else{b={};c=[];for(f=0;f<d.length;f++)g=dc(d[f]),null==g||b[g]||(b[g]=!0,c.push(g));b=dc(e);if(null!=b){d=[];b=Yb(b);f=!1;if(b)for(g=0;g<c.length;g++)k=Yb(c[g]),b==k&&(f=!0),k&&d.push("950"+b+k);f||(d=[]);c=d}else c=[]}Sb(a,c)}a=new Cb;a.$=B(e,5);a.J=B(e,4);return a},cc=function(a){var b=new Cb;b.J=a;return b},fc=function(a){a=a.google_ad_modifications=a.google_ad_modifications||
+{};a.remove_ads_by_default=!0;a.ad_whitelist=[{ad_tag_origin:"pso"}];a.ad_blacklist=[];a.space_collapsing="slot"},dc=function(a){var b;switch(B(a,6)){case 1:b=B(a,4);break;case 2:b=B(a,7)}return null!=b?b:null};var gc=function(a){this.document=a};var X=function(a){G.call(this,a)};u(X,G);X.prototype.getData=function(a){var b=X.Da.getData.call(this,a),c;a:{c=(new gc(a.document)).document.getElementsByTagName("script");for(var d=0;d<c.length;++d)if(c[d].hasAttribute("data-pso-version")){c=c[d].getAttribute("data-pso-version");break a}c=null}b.sv=c;if(d=H(a).ps||null){c=d.m;var d=d.f(),e=b.wpc;b.wpc=null!=e?e:c.B();b.su=B(c,14);b.tn=c.O();b.ev=d&&B(d,5)}if(a=H(a).ss||null)b.s=a.J,b.st=a.$;return b};var hc=null,ic=!1,lc=function(a){var b=jc,c=kc;b.addEventListener?(a&&b.addEventListener("DOMContentLoaded",a,!1),c&&b.addEventListener("load",c,!1)):b.attachEvent&&c&&b.attachEvent("onload",c)},nc=function(a){t(hc)&&a.clearInterval&&(a.clearInterval(hc),hc=null);ic||mc(a,!1);mc(a,!0)},oc=function(a,b){try{nc(b);var c=H(b).ss||null;if(c&&c.I){var d=c.I,e=d.C(),f=d.o,g=d.A,k=d.X,l=d.l.length;e||0!=l||f.push(6);for(var m=new X(l),c=0;c<g.length;c++)m.D(g[c]);if(e&&0==f.length&&null===k)Qa(a,a.Ca,a.aa,
+m);else{for(e=0;e<f.length;e++)m.i(f[e]);Ra(a,Pa(m,k))}}else Ra(a,(new X(0)).i(2))}catch(p){Ra(a,Pa((new X(0)).i(1),p))}H(b).loaded=!0},mc=function(a,b){b||(ic=!0);var c=H(a).ss||null;if(c&&c.I){c=c.I;try{c.apply(b)}catch(d){c.i(1),null===c.X&&(c.X=d)}}},pc=function(){mc(window,!1)};var Y=new function(a){this.Ca="pso_success";this.sa="pso_failure";this.W=this.aa=.01;this.ua=!1;this.K=a}(window);
+try{var W=window,La,qc=H(W).config;La=qc?new Za(qc):null;if(!La)throw Error("No config");var rc=Ma(10),sc=Ma(7);Y.aa=null!=rc?rc:Y.aa;Y.W=null!=sc?sc:Y.W;var ac=new $a(La),tc=ac;H(W).ps=tc;var Z,bc;if(w("iPad")||w("Android")&&!w("Mobile")||w("Silk")||!(w("iPod")||w("iPhone")||w("Android")||w("IEMobile")))Z=cc(16);else{var uc,vc=/^#([^=]*)=(\d+)$/.exec(W.location.hash);if((uc=vc&&3==vc.length&&"pso_strategy"==vc[1]?+vc[2]:null)&&V[uc]){Z=cc(uc);var wc=W;$b(uc)&&fc(wc)}else{var xc=W,yc=ac.m.N(),zc;
+try{var Ac=parseInt(xc.localStorage.getItem("PSO_EXP0"),10);zc=isNaN(Ac)?null:Ac}catch(a){zc=null}if(null==zc){var Bc=zc=Math.floor(1024*Math.random());try{xc.localStorage.setItem("PSO_EXP0",Bc.toString())}catch(a){}}bc=new Zb(zc,0,yc);Z=ec()}if(1==Z.$){var Cc=W;$b(Z.J)&&fc(Cc)}}if(!Z)throw Error("No strategyState created!");var Dc=Z;H(W).ss=Dc;var Ec=W,Fc=Z,Gc=Fc.J;if(t(Gc)){var Hc=V[Gc];Gc&&Hc&&(Fc.I=new Hc(Ec))}if(bc){var Ic=W,Vb=bc.V,Ub=W.location.hostname,Jc=[],Kc=Xb(["17415655","17415656"],
+1,Wb("unif1"));null===Kc||Jc.push(Kc);var Lc=Xb(["17415657","17415658"],10,Wb("unif2"));null===Lc||Jc.push(Lc);var Mc=Xb(["17415659","17415660"],100,Wb("unif3"));null===Mc||Jc.push(""+Mc);0<Jc.length&&Sb(Ic,Jc)}var jc=W,kc=ba(oc,Y,jc),Nc=ba(nc,jc);switch(jc.document.readyState){case "complete":kc();break;case "interactive":Nc();lc();break;default:var Oc=jc,Pc=cb(Oc);Pc.loaded||(Pc.onload=pc);hc=Oc.setInterval(pc,10);lc(Nc)}}catch(a){Ra(Y,Pa(new X(0),a))};})();
+</script><style type="text/css"></style>
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://lifeofageekadmin.com/wp-content/themes/Bold/iestyle.css" />
+<![endif]-->
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://lifeofageekadmin.com/wp-content/themes/Bold/ie6style.css" />
+<script defer type="text/javascript" src="http://lifeofageekadmin.com/wp-content/themes/Bold/js/pngfix.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/services.css"></head>
+
+<body class="single single-post postid-2327 single-format-standard chrome et_includes_sidebar">
+<div class="logo"> <a href="http://lifeofageekadmin.com/">	<img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/lifeofageekadmin2.png" alt="Life of a Geek Admin" class="logo-image"></a>
+<img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/slogan-left.gif" alt="logo" style="float: left; margin-top: 3px;">
+<div class="slogan">
+    The Adventures of a True Geek Administrator</div>
+<img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/slogan-right.gif" alt="logo" style="float: left; margin-top: 3px;">
+</div>
+
+<!--This controls pages navigation bar-->
+<div id="pages">
+    <div id="pages-inside">
+			<ul id="menu-menu" class="nav superfish sf-js-enabled"><li id="menu-item-270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-270"><a href="http://lifeofageekadmin.com/about/">About</a></li>
+<li id="menu-item-291" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-291"><a title="Reviews" href="http://lifeofageekadmin.com/category/review/">Reviews</a></li>
+<li id="menu-item-338" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-338"><a title="Scripting" href="http://lifeofageekadmin.com/category/scripting/">Scripting</a></li>
+<li id="menu-item-399" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-399"><a title="Linux" href="http://lifeofageekadmin.com/category/linux/">Linux</a></li>
+<li id="menu-item-400" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-400"><a title="Windows" href="http://lifeofageekadmin.com/category/windows/">Windows</a></li>
+<li id="menu-item-535" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-535"><a href="http://lifeofageekadmin.com/category/web/">Web</a></li>
+<li id="menu-item-612" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-612"><a href="http://lifeofageekadmin.com/category/virtualization/">Virtualization</a></li>
+<li id="menu-item-1093" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1093"><a href="http://lifeofageekadmin.com/category/powershell/">Powershell</a></li>
+<li id="menu-item-2802" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2802"><a href="http://lifeofageekadmin.com/category/storage/">Storage</a></li>
+</ul>
+            <img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/search-icon.gif" alt="search" id="search-icon">
+
+            <div id="search-wrap">
+            <div id="search-body">
+
+                        <div class="search_bg">
+                <form method="get" id="searchform" action="http://lifeofageekadmin.com//">
+                    <div>
+                        <input type="text" value="" name="s" id="s">
+                        <input type="submit" id="searchsubmit" value="Search">
+                    </div>
+                </form>
+            </div>
+
+            </div>
+            </div>
+    </div>
+</div>
+<div style="clear: both;"></div>
+<!--End pages navigation-->
+<div id="bodywrap">
+<div id="bottom-bg">
+<div id="wrapper2"><div id="content">
+<img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/content-top.gif" alt="top" style="float: left;">
+<div id="left-div">
+
+        
+ <div class="single-post-wrap">
+         <div style="clear: both;"></div>
+
+        <span class="post-info-single">
+
+            <span class="post-date">
+            <span class="post-date-inside">Nov 11, 2014</span><span class="date-right"></span>
+            </span>
+
+                            <span class="post-author">
+                Posted  by <strong><a href="http://lifeofageekadmin.com/author/newlife007/" title="Posts by newlife007" rel="author">newlife007</a></strong> on <strong>Nov 11, 2014</strong> in <strong><a href="http://lifeofageekadmin.com/category/linux/" rel="category tag">Linux</a></strong> | <strong><a href="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/#comments">1 comment</a></strong>                </span>
+            
+            </span>
+            <div style="clear: both;"></div>
+            <h2 class="post-title"><a href="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/" title="Permanent Link to How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit">
+            How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit            </a></h2>
+
+
+        <div style="clear: both;"></div>
+
+       
+            
+                            <div class="thumbnail-div">
+                    <a href="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/" title="Permanent Link to How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit">
+                        <img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/tux1.jpg" alt="How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit" width="200" height="200">                    </a>
+                </div>
+            
+        
+        <p>Microsoft’s SQL drivers can not use the 2.2.14 unixODBC installed with RedHat 6. It requires 2.3.0 which requires compiling and installing from source.</p>
+<p>First download the latest unixODBC from <a href="http://www.unixodbc.org/" target="_blank">http://www.unixodbc.org/</a> . Put tarball in /tmp and extract.</p>
+<p>Extract the tar ball</p>
+<p># tar xvzf unixODBC-2.3.0.tar.gz</p>
+<p>Change to the unixODBC-2.3.0 directory adn set a few compiler variables, configure, make and install the code.</p>
+<p>At a command prompt, execute the command:</p>
+<p># CPPFLAGS=”-DSIZEOF_LONG_INT=8″<br>
+# export CPPFLAGS.<br>
+# ./configure –prefix=/usr –libdir=/usr/lib64 –sysconfdir=/etc –enable-gui=no –enable-drivers=no –enable-iconv –with-iconv-char-enc=UTF8 –with-iconv-ucode-enc=UTF16LE<br>
+# make<br>
+# make install</p>
+<p>Download MS SQL Odbc drivers<br>
+Download the msodbcsql-11.0.2270.0.tar.gz from <a href="http://www.microsoft.com/en-us/download/details.aspx?id=36437" target="_blank">http://www.microsoft.com/en-us/download/details.aspx?id=36437</a>&nbsp; drivers. Copy msodbcsql-11.0.2270.0.tar.gz to /tmp.</p>
+<p>Install a few requirements.<br>
+ODBC driver for 64-bit Red Hat Enterprise Linux 5 requires the following packages:<br>
+glibc<br>
+libgcc<br>
+libstdc++<br>
+e2fsprogs-libs<br>
+krb5-libs<br>
+openssl</p>
+<p>Make sure that you have root permission.</p>
+<p>Change to the directory where the ODBC driver on Linux placed the file called msodbcsql-11.0.2270.0.tar.gz. Make sure that you have the *.tar.gz file that matches your version of Linux. To extract the files, execute the following command, tar xvzf msodbcsql-11.0.2270.0.tar.gz.</p>
+<p>Change to the msodbcsql-11.0.2270.0 directory and there you should see a file called install.sh.<br>
+To see a list of the available installation options, execute the following command: ./install.sh install.</p>
+<p>Enter YES to accept the license or anything else to terminate the installation: YES</p>
+<p>Checking for 64 bit Linux compatible OS ………………………………. OK<br>
+Checking required libs are installed …………………………………. OK<br>
+unixODBC utilities (odbc_config and odbcinst) installed ………………… OK<br>
+unixODBC Driver Manager version 2.3.0 installed ……………………….. OK<br>
+unixODBC Driver Manager configuration correct ………………………… OK*<br>
+Microsoft ODBC Driver 11 for SQL Server already installed ………… NOT FOUND<br>
+Microsoft ODBC Driver 11 for SQL Server files copied …………………… OK<br>
+Symbolic links for bcp and sqlcmd created …………………………….. OK<br>
+Microsoft ODBC Driver 11 for SQL Server registered ………………. INSTALLED</p>
+<p>Install log created at /tmp/msodbcsql.837.18449.29780/install.log.</p>
+<p>Make a backup of odbcinst.ini. The driver installation updates /etc/odbcinst.ini. odbcinst.ini contains the list of drivers that are registered with the unixODBC Driver Manager. To discover the location of odbcinst.ini on your computer, execute the following command: odbc_config –odbcinstini.</p>
+<p>Before you install the driver, execute the following command: ./install.sh verify. The output of ./install.sh verify reports if your computer has the required software to support the ODBC driver on Linux.</p>
+<p>When you are ready to install the ODBC driver on Linux, execute the command: ./install.sh install. If you need to specify an install command (bin-dir or lib-dir), specify the command after the install option.</p>
+<p>After reviewing the license agreement, type YES to continue with the installation.</p>
+<p>Installation puts the driver in /opt/microsoft/msodbcsql/11.0.2270.0. The driver and its support files must be in /opt/microsoft/msodbcsql/11.0.2270.0.</p>
+<p>To verify that the ODBC driver on Linux was registered successfully, execute the following command: odbcinst -q -d -n “ODBC Driver 11 for SQL Server”.</p>
+<p>[ cvgldcognos11 etc ] # odbcinst -q -d -n “ODBC Driver 11 for SQL Server”<br>
+[ODBC Driver 11 for SQL Server]<br>
+Description=Microsoft ODBC Driver 11 for SQL Server<br>
+Driver=/opt/microsoft/msodbcsql/lib64/libmsodbcsql-11.0.so.2270.0<br>
+Threading=1<br>
+UsageCount=1</p>
+<p>To add drivers:<br>
+The value passed to the Driver keyword can either be:<br>
+•&nbsp;&nbsp; &nbsp;The name you used when you installed the driver. Or,<br>
+•&nbsp;&nbsp; &nbsp;The path to the driver, which was specified in the template .ini file used to install the driver.<br>
+To create a DSN, create (if necessary) and edit the file ~/.odbc.ini (odbc.ini in your home directory). The following is a sample file that shows the required entries for a DSN:</p>
+<p>[MSSQLTest]<br>
+Driver = ODBC Driver 11 for SQL Server<br>
+Server = [protocol:]server[,port]<br>
+#<br>
+# Note:<br>
+# Port is not a valid keyword in the ~/.odbc.ini file<br>
+# for the Microsoft ODBC driver on Linux<br>
+#</p>
+<p>You can optionally specify the protocol and port to connect to the server. For example, Server = tcp:servername,12345.<br>
+To connect to a named instance on a static port, use Server = servername,port_number. Connecting to dynamic port is not supported.<br>
+Optionally, you can add the DSN information to a template file and execute the following command: odbcinst -i -s -f template_file<br>
+You can verify that your driver is working by using isql to test the connection. Or, you can use this command: bcp master.INFORMATION_SCHEMA.TABLES out OutFile.dat -S &lt;server&gt; -U &lt;name&gt; -P &lt;password&gt;</p>
+<div class="related-posts">
+<div id="related-posts-MRP_all" class="related-posts-type">
+<h2>Related Posts</h2>
+<p>None</p>
+</div></div>
+        
+        <div style="clear: both;"></div>
+                  <div style="clear: both;"></div>
+        <!-- You can start editing here. -->
+	<h3 id="comments">One Response to “How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit”</h3>
+	
+			<ol class="commentlist clearfix">
+					<li class="comment even thread-even depth-1" id="comment-188755">
+				<div id="div-comment-188755" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/1c661e1a9b894ef1da11561c8d72d15a" srcset="http://1.gravatar.com/avatar/1c661e1a9b894ef1da11561c8d72d15a?s=80&amp;d=mm&amp;r=g 2x" class="avatar avatar-40 photo grav-hashed grav-hijack" height="40" width="40" id="grav-1c661e1a9b894ef1da11561c8d72d15a-0">			<cite class="fn">Mahesh</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/#comment-188755">
+			May 7, 2015 at 3:20 pm</a>		</div>
+
+		<p>Have you tried creating a rpm for this odbc driver install?  If so, can you provide the SPEC file ?</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/?replytocom=188755#respond" onclick="return addComment.moveForm( &quot;div-comment-188755&quot;, &quot;188755&quot;, &quot;respond&quot;, &quot;2327&quot; )" aria-label="Reply to Mahesh">Reply</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		</ol>
+	
+	
+						<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title"><span>Leave a Reply</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/#respond" style="display:none;">Cancel reply</a></small></h3>				<form action="http://lifeofageekadmin.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required="required"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit Comment"> <input type="hidden" name="comment_post_ID" value="2327" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="28c6f37c52"></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"></p>				<input type="hidden" id="ak_js" name="ak_js" value="1464933487257"></form>
+					</div><!-- #respond -->
+		
+        </div>
+
+
+
+
+        
+    
+</div>
+<div id="sidebar">
+<div id="connect2">
+<a href="http://lifeofageekadmin.com/feed"><img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/icon-rss.png" alt="search" class="icon"></a>
+
+<a href="http://twitter.com/NewlifeMark"><img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/icon-twitter.png" alt="search" class="icon"></a>
+
+<a href="http://www.facebook.com/LifeofageekadmincomBlog"><img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/icon-facebook.png" alt="search" class="icon"></a>
+
+
+<img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/connect.png" alt="search" class="icon">
+</div>
+   <div class="sidebar-box-wrap"><div class="sidebar-box"><span class="sidebar-box-title">Subscribe to Blog via Email</span>
+			<form action="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/#" method="post" accept-charset="utf-8" id="subscribe-blog-blog_subscription-2">
+				<div id="subscribe-text"><p>Enter your email address to subscribe to this blog and receive notifications of new posts by email.</p>
+</div>					<p id="subscribe-email">
+						<label id="jetpack-subscribe-label" for="subscribe-field-blog_subscription-2" style="clip: rect(1px 1px 1px 1px); position: absolute; height: 1px; width: 1px; overflow: hidden;">
+							Email Address						</label>
+						<input type="email" name="email" required="required" class="required" value="" id="subscribe-field-blog_subscription-2" placeholder="Email Address">
+					</p>
+
+					<p id="subscribe-submit">
+						<input type="hidden" name="action" value="subscribe">
+						<input type="hidden" name="source" value="http://lifeofageekadmin.com/install-microsoft-sql-drivers-unixodbc-2-3-0-rhel-6-64-bit/">
+						<input type="hidden" name="sub-type" value="widget">
+						<input type="hidden" name="redirect_fragment" value="blog_subscription-2">
+												<input type="submit" value="Subscribe" name="jetpack_subscriptions_widget">
+					</p>
+							</form>
+
+			<script>
+			/*
+			Custom functionality for safari and IE
+			 */
+			(function( d ) {
+				// In case the placeholder functionality is available we remove labels
+				if ( ( 'placeholder' in d.createElement( 'input' ) ) ) {
+					var label = d.querySelector( 'label[for=subscribe-field-blog_subscription-2]' );
+						label.style.clip 	 = 'rect(1px, 1px, 1px, 1px)';
+						label.style.position = 'absolute';
+						label.style.height   = '1px';
+						label.style.width    = '1px';
+						label.style.overflow = 'hidden';
+				}
+
+				// Make sure the email value is filled in before allowing submit
+				var form = d.getElementById('subscribe-blog-blog_subscription-2'),
+					input = d.getElementById('subscribe-field-blog_subscription-2'),
+					handler = function( event ) {
+						if ( '' === input.value ) {
+							input.focus();
+
+							if ( event.preventDefault ){
+								event.preventDefault();
+							}
+
+							return false;
+						}
+					};
+
+				if ( window.addEventListener ) {
+					form.addEventListener( 'submit', handler, false );
+				} else {
+					form.attachEvent( 'onsubmit', handler );
+				}
+			})( document );
+			</script>
+				
+</div></div><div class="sidebar-box-wrap"><div class="sidebar-box"><span class="sidebar-box-title"> </span>			<div class="textwidget"><iframe src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/cm.html" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+</div>
+		</div></div>
+
+</div><div style="clear: both;"></div>
+<img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/content-bottom.gif" alt="top" style="float: left;">
+</div>
+<div style="clear: both;"></div>
+</div>
+</div>
+
+<div id="footer">
+<div id="footer-inside">
+<div id="footer-inside-2">
+    <div class="footer-box"><h3>Tags</h3><div style="clear: both;"></div><div class="tagcloud"><a href="http://lifeofageekadmin.com/tag/2008-r2/" class="tag-link-160 tag-link-position-1" title="14 topics" style="font-size: 12.450331125828pt;">2008 R2</a>
+<a href="http://lifeofageekadmin.com/tag/alfresco/" class="tag-link-53 tag-link-position-2" title="4 topics" style="font-size: 8pt;">Alfresco</a>
+<a href="http://lifeofageekadmin.com/tag/android/" class="tag-link-420 tag-link-position-3" title="5 topics" style="font-size: 8.7417218543046pt;">Android</a>
+<a href="http://lifeofageekadmin.com/tag/apache/" class="tag-link-12 tag-link-position-4" title="13 topics" style="font-size: 12.172185430464pt;">apache</a>
+<a href="http://lifeofageekadmin.com/tag/audio-2/" class="tag-link-77 tag-link-position-5" title="6 topics" style="font-size: 9.3907284768212pt;">audio</a>
+<a href="http://lifeofageekadmin.com/tag/backup/" class="tag-link-19 tag-link-position-6" title="6 topics" style="font-size: 9.3907284768212pt;">backup</a>
+<a href="http://lifeofageekadmin.com/tag/batch/" class="tag-link-415 tag-link-position-7" title="8 topics" style="font-size: 10.317880794702pt;">batch</a>
+<a href="http://lifeofageekadmin.com/tag/blu-ray/" class="tag-link-201 tag-link-position-8" title="4 topics" style="font-size: 8pt;">blu-ray</a>
+<a href="http://lifeofageekadmin.com/tag/centos/" class="tag-link-79 tag-link-position-9" title="22 topics" style="font-size: 14.119205298013pt;">CentOS</a>
+<a href="http://lifeofageekadmin.com/tag/command-line/" class="tag-link-90 tag-link-position-10" title="5 topics" style="font-size: 8.7417218543046pt;">command line</a>
+<a href="http://lifeofageekadmin.com/tag/dell/" class="tag-link-17 tag-link-position-11" title="9 topics" style="font-size: 10.781456953642pt;">Dell</a>
+<a href="http://lifeofageekadmin.com/tag/dvd/" class="tag-link-93 tag-link-position-12" title="4 topics" style="font-size: 8pt;">DVD</a>
+<a href="http://lifeofageekadmin.com/tag/emc/" class="tag-link-385 tag-link-position-13" title="14 topics" style="font-size: 12.450331125828pt;">EMC</a>
+<a href="http://lifeofageekadmin.com/tag/fedora/" class="tag-link-417 tag-link-position-14" title="66 topics" style="font-size: 18.476821192053pt;">Fedora</a>
+<a href="http://lifeofageekadmin.com/tag/gimp/" class="tag-link-56 tag-link-position-15" title="6 topics" style="font-size: 9.3907284768212pt;">GIMP</a>
+<a href="http://lifeofageekadmin.com/tag/inventory/" class="tag-link-419 tag-link-position-16" title="5 topics" style="font-size: 8.7417218543046pt;">Inventory</a>
+<a href="http://lifeofageekadmin.com/tag/ipv6/" class="tag-link-83 tag-link-position-17" title="4 topics" style="font-size: 8pt;">IPV6</a>
+<a href="http://lifeofageekadmin.com/tag/itunes/" class="tag-link-22 tag-link-position-18" title="4 topics" style="font-size: 8pt;">iTunes</a>
+<a href="http://lifeofageekadmin.com/tag/libreoffice/" class="tag-link-145 tag-link-position-19" title="4 topics" style="font-size: 8pt;">LibreOffice</a>
+<a href="http://lifeofageekadmin.com/tag/linux/" class="tag-link-413 tag-link-position-20" title="123 topics" style="font-size: 20.887417218543pt;">Linux</a>
+<a href="http://lifeofageekadmin.com/tag/mac/" class="tag-link-95 tag-link-position-21" title="4 topics" style="font-size: 8pt;">Mac</a>
+<a href="http://lifeofageekadmin.com/tag/monitoring-2/" class="tag-link-36 tag-link-position-22" title="9 topics" style="font-size: 10.781456953642pt;">monitoring</a>
+<a href="http://lifeofageekadmin.com/tag/multimedia/" class="tag-link-15 tag-link-position-23" title="35 topics" style="font-size: 15.973509933775pt;">multimedia</a>
+<a href="http://lifeofageekadmin.com/tag/mysql/" class="tag-link-11 tag-link-position-24" title="8 topics" style="font-size: 10.317880794702pt;">MySQL</a>
+<a href="http://lifeofageekadmin.com/tag/networking/" class="tag-link-124 tag-link-position-25" title="6 topics" style="font-size: 9.3907284768212pt;">networking</a>
+<a href="http://lifeofageekadmin.com/tag/nvidia/" class="tag-link-24 tag-link-position-26" title="4 topics" style="font-size: 8pt;">Nvidia</a>
+<a href="http://lifeofageekadmin.com/tag/osx/" class="tag-link-422 tag-link-position-27" title="5 topics" style="font-size: 8.7417218543046pt;">OSX</a>
+<a href="http://lifeofageekadmin.com/tag/php/" class="tag-link-13 tag-link-position-28" title="5 topics" style="font-size: 8.7417218543046pt;">php</a>
+<a href="http://lifeofageekadmin.com/tag/plex-media-server/" class="tag-link-141 tag-link-position-29" title="4 topics" style="font-size: 8pt;">plex media server</a>
+<a href="http://lifeofageekadmin.com/tag/powershell/" class="tag-link-418 tag-link-position-30" title="27 topics" style="font-size: 14.953642384106pt;">Powershell</a>
+<a href="http://lifeofageekadmin.com/tag/redhat/" class="tag-link-32 tag-link-position-31" title="23 topics" style="font-size: 14.304635761589pt;">RedHat</a>
+<a href="http://lifeofageekadmin.com/tag/rhel/" class="tag-link-33 tag-link-position-32" title="23 topics" style="font-size: 14.304635761589pt;">RHEL</a>
+<a href="http://lifeofageekadmin.com/tag/scanning/" class="tag-link-118 tag-link-position-33" title="8 topics" style="font-size: 10.317880794702pt;">scanning</a>
+<a href="http://lifeofageekadmin.com/tag/storage/" class="tag-link-274 tag-link-position-34" title="11 topics" style="font-size: 11.523178807947pt;">storage</a>
+<a href="http://lifeofageekadmin.com/tag/ubuntu/" class="tag-link-81 tag-link-position-35" title="17 topics" style="font-size: 13.192052980132pt;">Ubuntu</a>
+<a href="http://lifeofageekadmin.com/tag/vbscript/" class="tag-link-414 tag-link-position-36" title="5 topics" style="font-size: 8.7417218543046pt;">vbscript</a>
+<a href="http://lifeofageekadmin.com/tag/video/" class="tag-link-14 tag-link-position-37" title="8 topics" style="font-size: 10.317880794702pt;">video</a>
+<a href="http://lifeofageekadmin.com/tag/virtual/" class="tag-link-63 tag-link-position-38" title="11 topics" style="font-size: 11.523178807947pt;">virtual</a>
+<a href="http://lifeofageekadmin.com/tag/virtualbox/" class="tag-link-62 tag-link-position-39" title="19 topics" style="font-size: 13.562913907285pt;">virtualbox</a>
+<a href="http://lifeofageekadmin.com/tag/vmax/" class="tag-link-467 tag-link-position-40" title="4 topics" style="font-size: 8pt;">VMAX</a>
+<a href="http://lifeofageekadmin.com/tag/vmware/" class="tag-link-105 tag-link-position-41" title="8 topics" style="font-size: 10.317880794702pt;">vmware</a>
+<a href="http://lifeofageekadmin.com/tag/web-2/" class="tag-link-75 tag-link-position-42" title="7 topics" style="font-size: 9.8543046357616pt;">web</a>
+<a href="http://lifeofageekadmin.com/tag/windows/" class="tag-link-412 tag-link-position-43" title="161 topics" style="font-size: 22pt;">Windows</a>
+<a href="http://lifeofageekadmin.com/tag/windows-10/" class="tag-link-391 tag-link-position-44" title="7 topics" style="font-size: 9.8543046357616pt;">windows 10</a>
+<a href="http://lifeofageekadmin.com/tag/wordpress-2/" class="tag-link-9 tag-link-position-45" title="7 topics" style="font-size: 9.8543046357616pt;">wordpress</a></div>
+</div><div class="footer-box"><h3>Blogroll</h3><div style="clear: both;"></div>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.clug.org/" target="_blank">Cincinnati Linux Users Group</a></li>
+<li><a href="http://www.newlifeconsult.com/" rel="me" title="My Company and the services we provide to the Greater Cincinnati area" target="_blank">Newlife Computer Consulting</a></li>
+<li><a href="http://www.passingdaisies.net/" rel="child" title="Eating your way to healthy life one bite at a time" target="_blank">Passing Daisies</a></li>
+<li><a href="http://passingdaisiescreative.net/" rel="child" target="_blank">Passing Daisies Creative</a></li>
+
+	</ul>
+</div>
+</div>
+</div>
+</div>
+    <div class="footer-bottom">
+    <div class="footer-bottom-inside">
+   Powered by  <a href="http://www.wordpress.com/">WordPress</a> | Designed by  <a href="http://www.elegantthemes.com/">Elegant Themes</a> </div>
+    </div>
+    </div>
+
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/superfish.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/custom.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+	jQuery(function(){
+	});
+//]]>
+</script>
+
+<!-- Begin Vibrant Media IntelliTXT tag -->
+<script type="text/javascript" src="http://lifeofageekadmin.us.intellitxt.com/intellitxt/front.asp?ipid=36894"></script>
+<!-- End Vibrant Media IntelliTXT tag -->
+<!-- Powered by WPtouch: 4.1.4 -->	<div style="display:none">
+	<div class="grofile-hash-map-1c661e1a9b894ef1da11561c8d72d15a">
+	</div>
+	</div>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/form.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/wpgroho.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/jquery.easing-1.3.pack.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/jquery.magnific-popup.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var et_ptemplates_strings = {"captcha":"Captcha","fill":"Fill","field":"field","invalid":"Invalid email"};
+var et_ptemplates_strings = {"captcha":"Captcha","fill":"Fill","field":"field","invalid":"Invalid email"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/et-ptemplates-frontend.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/wp-embed.min.js"></script>
+<script type="text/javascript" src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/e-201622.js" async="" defer=""></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.0.3',blog:'26396631',post:'2327',tz:'0',srv:'lifeofageekadmin.com'} ]);
+	_stq.push([ 'clickTrackerInit', '26396631', '2327' ]);
+</script>
+
+
+<img src="./How To Install Microsoft SQL drivers and unixODBC 2.3.0 on RHEL 6 64 bit - Life of a Geek Admin_files/g.gif" alt=":)" width="6" height="5" id="wpstats"></body></html>

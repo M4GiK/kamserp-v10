@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Actions opening views on models -->
+
+        <record id="product_search_form_view" model="ir.ui.view">
+            <field name="name">product.product.search</field>
+            <field name="model">product.product</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <field name="attribute_line_ids" position="replace">
+                    <field name="attribute_value_ids" groups="product.group_product_variant"/>
+                    <field name="product_tmpl_id" string="Product Template"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_kams_erp_product_form">
+            <field name="name">Product Form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="name">Product Template</attribute>
+                </xpath>
+
+                <group name="group_general" position="inside">
+                    <field name="barcode" attrs="{'invisible': [('product_variant_count', '>', 1)]}"/>
+                    <field name="qty_available"/>
+                </group>
+                <group name="group_standard_price" position="inside">
+                    <field name="price_subiekt" widget="monetary"/>
+                </group>
+
+
+                <div name="button_box" position="inside">
+                    <button name="%(product.product_variant_action)d" type="action"
+                            icon="fa-sitemap" class="oe_stat_button"
+                            attrs="{'invisible': [('product_variant_count', '&lt;=', 1)]}"
+                            groups="product.group_product_variant">
+                        <field string="Variants" name="product_variant_count" widget="statinfo"/>
+                    </button>
+                </div>
+
+                <xpath expr="//page[@name='sales']" position="after">
+                    <page name="variants" string="Variants" groups="product.group_product_variant">
+                        <field name="attribute_line_ids" widget="one2many_list" context="{'show_attribute': False}">
+                            <tree string="Variants" editable="bottom">
+                                <field name="attribute_id"/>
+                                <field name="value_ids" widget="many2many_tags" options="{'no_create_edit': True}"
+                                       domain="[('attribute_id', '=', attribute_id)]"
+                                       context="{'default_attribute_id': attribute_id}"/>
+                            </tree>
+                        </field>
+                        <p class="oe_grey">
+                            <strong>Warning</strong>: adding or deleting attributes
+                            will delete and recreate existing variants and lead
+                            to the loss of their possible customizations.
+                        </p>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_kams_erp_product_kanban">
+            <field name="name">Product.template.product.kanban</field>
+            <field name="model">product.product</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="image_small"/>
+                    <field name="price_kqs"/>
+                    <field name="price_subiekt"/>
+                    <!--<field name="is_product_variant"/>-->
+                    <field name="product_variant_count"/>
+                    <field name="product_variant_ids"/>
+                    <field name="currency_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('product.template', 'image_small', record.id.value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <span t-if="record.default_code.value">[<field name="default_code"/>]
+                                        </span>
+                                        <field name="name"/>
+                                    </strong>
+                                    <div t-if="record.product_variant_count.value &gt; 1">
+                                        <strong>
+                                            <t t-esc="record.product_variant_count.value"/>
+                                            Variants
+                                        </strong>
+                                    </div>
+                                    <div name="tags"/>
+                                    <ul>
+                                        <li>Cena sklepowa:
+                                            <b>
+                                                <field name="price_subiekt" widget="monetary"/>
+                                            </b>
+                                        </li>
+                                        <li>Cena internetowa:
+                                            <b>
+                                                <field name="price_kqs" widget="monetary"/>
+                                            </b>
+                                        </li>
+                                    </ul>
+                                    <div name="tags"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_kams_erp_product_tree">
+            <field name="name">Product</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="Products">
+                    <field name="image_small" string="Picture" widget="image" display="icon"/>
+                    <field name="name"/>
+                    <field name="attribute_value_ids" mode="tree" colspan="4" nolabel="1" widget="many2many_list"
+                           eval="ref('product.product')"/>
+                    <field name="description_sale"/>
+                    <field name="price_kqs"/>
+                    <field name="price_subiekt"/>
+                    <field name="qty_available"/>
+                    <field name="product_tmpl_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_kams_erp_product_sale">
+            <field name="name">product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Products">
+                        <field name="image_small" string="Picture" widget="image" display="icon"/>
+                        <field name="name"/>
+                        <field name="attribute_value_ids" widget="many2many_tags"
+                               groups="product.group_product_variant"/>
+                        <field name="description_sale"/>
+                        <field name="price" invisible="not context.get('pricelist',False)"/>
+                        <field name="price_kqs"/>
+                        <field name="price_subiekt"/>
+                        <!--<field name="state" invisible="1"/>-->
+                        <field name="product_tmpl_id" invisible="1"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_kams_erp_product_category_tree">
+            <field name="name">Product</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="Products">
+                    <field name="image_small" string="Picture" widget="image" display="icon"/>
+                    <field name="name"/>
+                    <field name="description_sale"/>
+                    <field name="price_kqs" string="Cena internetowa"/>
+                    <field name="price_subiekt" string="Cena sklepowa"/>
+                    <field name="total_amount_of_attribute_line" string="Ilość Na Stanie"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_kams_erp_product_template_tree">
+            <field name="name">product.template.product.tree.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Product">
+                        <field name="image_small" string="Picture" widget="image" display="icon"/>
+                        <field name="name"/>
+                        <field name="list_price" string="Cena Internetowa"/>
+                        <field name="price_subiekt" string="Cena Sklepowa" widget="monetary"/>
+                        <field name="weight"/>
+                        <field name="categ_id"/>
+                        <!--<field name="state" invisible="1"/>-->
+                        <field name="uom_id" invisible="1"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_template_description_form" model="ir.ui.view">
+            <field name="name">product.template.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description_sale']" position="replace">
+                    <field name="description" colspan="4" nolabel="1"
+                           placeholder="This note will be displayed on the quotations."/>
+                    <field name="description_sale" invisible="1" colspan="4" nolabel="1"
+                           placeholder="This note will be displayed on the quotations."/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_template_shop_price_kanban" model="ir.ui.view">
+            <field name="name">product.template.kanban.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lst_price']" position="after">
+                    <field name="price_subiekt" string="Cena Sklepowa"/>
+                </xpath>
+                <xpath expr="//ul" position="replace">
+                    <ul>
+                        <li>Cena internetowa: <field name="lst_price" widget="monetary"></field></li>
+                        <li>Cena sklepowa: <field name="price_subiekt" widget="monetary"></field></li>
+                    </ul>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

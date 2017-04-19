@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Actions opening views on models -->
+        <record id="product_category_search_view" model="ir.ui.view">
+            <field name="name">kams_erp.category.search</field>
+            <field name="model">product.category</field>
+            <field name="arch" type="xml">
+                <search string="Product Categories">
+                    <field name="name" string="Product Categories"/>
+                    <field name="parent_id"/>
+                    <!--<filter string="name" icon="terp-accessories-archiver" domain="[('categ_id','child_of',X]"/>-->
+                </search>
+            </field>
+        </record>
+        <record id="product_category_form_view" model="ir.ui.view">
+            <field name="name">kams_erp.category.form</field>
+            <field name="model">product.category</field>
+            <field name="arch" type="xml">
+                <form class="oe_form_configuration">
+                    <div class="oe_title">
+                        <label for="name" string="Category name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="e.g. Lamps"/></h1>
+                    </div>
+                    <group name="first" col="2" string="Category Type">
+                        <field name="parent_id"/>
+                        <field name="type"/>
+                        <!--<field name="product_ids" mode="tree" colspan="4" nolabel="1"-->
+                               <!--widget="one2many_list" eval="ref('view_kams_erp_product_category_tree')"/>-->
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="product_category_list_view" model="ir.ui.view">
+            <field name="name">kams_erp.category.list</field>
+            <field name="model">product.category</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree string="Product Categories">
+                    <field name="name"/>
+                    <field name="amount_of_product"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="categories_list_action">
+            <field name="name">Product Categories</field>
+            <field name="res_model">product.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="product_category_search_view"/>
+            <field name="view_id" ref="product_category_list_view"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first category</p>
+            </field>
+        </record>
+
+    </data>
+</openerp>

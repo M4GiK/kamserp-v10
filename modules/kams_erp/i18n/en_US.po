@@ -1,0 +1,778 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* kams_erp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-26 08:54+0000\n"
+"PO-Revision-Date: 2015-11-26 08:54+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_sale_order_count
+msgid "# of Sales Order"
+msgstr "# of Sales Order"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_property_account_payable_id
+msgid "Account Payable"
+msgstr "Account Payable"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_property_account_receivable_id
+msgid "Account Receivable"
+msgstr "Account Receivable"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_needaction
+msgid "Action Needed"
+msgstr "Action Needed"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_active
+msgid "Active"
+msgstr "Active"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_type
+msgid "Address Type"
+msgstr "Address Type"
+
+#. module: kams_erp
+#: selection:kams_erp.order,notify_email:0
+msgid "All Messages"
+msgstr "All Messages"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_bank_account_count
+msgid "Bank"
+msgstr "Bank"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_bank_ids
+msgid "Banks"
+msgstr "Banks"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_barcode
+msgid "Barcode"
+msgstr "Barcode"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_biography
+msgid "Biography"
+msgstr "Biography"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_birthdate
+msgid "Birthdate"
+msgstr "Birthdate"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_channel_ids
+msgid "Channels"
+msgstr "Channels"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr "Check if the contact is a company, otherwise it is a person"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_customer
+msgid "Check this box if this contact is a customer."
+msgstr "Check this box if this contact is a customer."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_supplier
+msgid "Check this box if this contact is a vendor. If it's not checked, purchase people will not see it when encoding a purchase order."
+msgstr "Check this box if this contact is a vendor. If it's not checked, purchase people will not see it when encoding a purchase order."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_employee
+msgid "Check this box if this contact is an Employee."
+msgstr "Check this box if this contact is an Employee."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_city
+msgid "City"
+msgstr "City"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_color
+msgid "Color Index"
+msgstr "Color Index"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_commercial_partner_id
+msgid "Commercial Entity"
+msgstr "Commercial Entity"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_ref_company_ids
+msgid "Companies that refers to partner"
+msgstr "Companies that refers to partner"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_company_id
+#: selection:kams_erp.order,company_type:0
+msgid "Company"
+msgstr "Company"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_company_type
+msgid "Company Type"
+msgstr "Company Type"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_contact_address
+msgid "Complete Address"
+msgstr "Complete Address"
+
+#. module: kams_erp
+#: selection:kams_erp.order,type:0
+msgid "Contact"
+msgstr "Contact"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_child_ids
+msgid "Contacts"
+msgstr "Contacts"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_contract_ids
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_contracts_count
+msgid "Contracts"
+msgstr "Contracts"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_payment_method_count
+msgid "Count Payment Method"
+msgstr "Count Payment Method"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_country_id
+msgid "Country"
+msgstr "Country"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_create_uid
+msgid "Created by"
+msgstr "Created by"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_create_date
+msgid "Created on"
+msgstr "Created on"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_credit_limit
+msgid "Credit Limit"
+msgstr "Credit Limit"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_currency_id
+msgid "Currency id"
+msgstr "Currency id"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_property_payment_term_id
+msgid "Customer Payment Term"
+msgstr "Customer Payment Term"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_date
+msgid "Date"
+msgstr "Date"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_message_last_post
+msgid "Date of the last message posted on the record."
+msgstr "Date of the last message posted on the record."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_description
+msgid "Description"
+msgstr "Description"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_email
+msgid "Email"
+msgstr "Email"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_notify_email
+msgid "Email Messages and Notifications"
+msgstr "Email Messages and Notifications"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_employee
+msgid "Employee"
+msgstr "Employee"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_fax
+msgid "Fax"
+msgstr "Fax"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_property_account_position_id
+msgid "Fiscal Position"
+msgstr "Fiscal Position"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_follower_ids
+msgid "Followers"
+msgstr "Followers"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Followers (Channels)"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Followers (Partners)"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_has_unreconciled_entries
+msgid "Has unreconciled entries"
+msgstr "Has unreconciled entries"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_id
+msgid "ID"
+msgstr "ID"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_im_status
+msgid "IM Status"
+msgstr "IM Status"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_message_unread
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "If checked, new messages require your attention."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_opt_out
+msgid "If opt-out is checked, this contact has refused to receive emails for mass mailing and marketing campaign. Filter 'Available for Mass Mailing' allows users to filter the partners when performing mass mailing."
+msgstr "If opt-out is checked, this contact has refused to receive emails for mass mailing and marketing campaign. Filter 'Available for Mass Mailing' allows users to filter the partners when performing mass mailing."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_lang
+msgid "If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
+msgstr "If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_image
+msgid "Image"
+msgstr "Image"
+
+#. module: kams_erp
+#: selection:kams_erp.order,company_type:0
+msgid "Individual"
+msgstr "Individual"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_ref
+msgid "Internal Reference"
+msgstr "Internal Reference"
+
+#. module: kams_erp
+#: selection:kams_erp.order,type:0
+msgid "Invoice address"
+msgstr "Invoice address"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,name:kams_erp.portal_action_invoices
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_invoice_ids
+#: model:ir.ui.menu,name:kams_erp.portal_invoices
+msgid "Invoices"
+msgstr "Invoices"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_is_follower
+msgid "Is Follower"
+msgstr "Is Follower"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_is_company
+msgid "Is a Company"
+msgstr "Is a Company"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_customer
+msgid "Is a Customer"
+msgstr "Is a Customer"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_supplier
+msgid "Is a Vendor"
+msgstr "Is a Vendor"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_function
+msgid "Job Position"
+msgstr "Job Position"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_issued_total
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_journal_item_count
+msgid "Journal Items"
+msgstr "Journal Items"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.menu_root
+msgid "KamsERP"
+msgstr "KamsERP"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_lang
+msgid "Language"
+msgstr "Language"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_last_post
+msgid "Last Message Date"
+msgstr "Last Message Date"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order___last_update
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_write_uid
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_write_date
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_last_time_entries_checked
+msgid "Last time the invoices & payments matching was performed for this partner. It is set either if there's not at least an unreconciled debit and an unreconciled credit or if you click the \"Done\" button."
+msgstr "Last time the invoices & payments matching was performed for this partner. It is set either if there's not at least an unreconciled debit and an unreconciled credit or if you click the \"Done\" button."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_last_time_entries_checked
+msgid "Latest Invoices & Payments Matching Date"
+msgstr "Latest Invoices & Payments Matching Date"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_image_medium
+msgid "Medium-sized image"
+msgstr "Medium-sized image"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_image_medium
+msgid "Medium-sized image of this contact. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Medium-sized image of this contact. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.menu_1
+msgid "Menu 1"
+msgstr "Menu 1"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.menu_2
+msgid "Menu 2"
+msgstr "Menu 2"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.menu_3
+msgid "Menu 3"
+msgstr "Menu 3"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_ids
+msgid "Messages"
+msgstr "Messages"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_message_ids
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_mobile
+msgid "Mobile"
+msgstr "Mobile"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_display_name
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_name
+msgid "Name"
+msgstr "Name"
+
+#. module: kams_erp
+#: selection:kams_erp.order,notify_email:0
+msgid "Never"
+msgstr "Never"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_comment
+msgid "Notes"
+msgstr "Notes"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_needaction_counter
+msgid "Number of Actions"
+msgstr "Number of Actions"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Number of messages which requires an action"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_message_unread_counter
+msgid "Number of unread messages"
+msgstr "Number of unread messages"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_opt_out
+msgid "Opt-Out"
+msgstr "Opt-Out"
+
+#. module: kams_erp
+#: selection:kams_erp.order,type:0
+msgid "Other address"
+msgstr "Other address"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_parent_name
+msgid "Parent name"
+msgstr "Parent name"
+
+#. module: kams_erp
+#: model:ir.model,name:kams_erp.model_kams_erp_order
+msgid "Partner"
+msgstr "Partner"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_debit_limit
+msgid "Payable Limit"
+msgstr "Payable Limit"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_payment_method_ids
+msgid "Payment Methods"
+msgstr "Payment Methods"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_phone
+msgid "Phone"
+msgstr "Phone"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_notify_email
+msgid "Policy to receive emails for new messages pushed to your personal Inbox:\n"
+"- Never: no emails are sent\n"
+"- All Messages: for every notification you receive in your Inbox"
+msgstr "Policy to receive emails for new messages pushed to your personal Inbox:\n"
+"- Never: no emails are sent\n"
+"- All Messages: for every notification you receive in your Inbox"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,name:kams_erp.action_quotations_portal
+#: model:ir.ui.menu,name:kams_erp.portal_quotations
+msgid "Quotations"
+msgstr "Quotations"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_parent_id
+msgid "Related Company"
+msgstr "Related Company"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,name:kams_erp.action_orders_portal
+msgid "Sale Orders"
+msgstr "Sale Orders"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_property_product_pricelist
+msgid "Sale Pricelist"
+msgstr "Sale Pricelist"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_sale_order_ids
+msgid "Sales Order"
+msgstr "Sales Order"
+
+#. module: kams_erp
+#: model:ir.ui.menu,name:kams_erp.portal_sales_orders
+msgid "Sales Orders"
+msgstr "Sales Orders"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_team_id
+msgid "Sales Team"
+msgstr "Sales Team"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_user_id
+msgid "Salesperson"
+msgstr "Salesperson"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_use_parent_address
+msgid "Select this if you want to set company's address information  for this contact"
+msgstr "Select this if you want to set company's address information  for this contact"
+
+#. module: kams_erp
+#: selection:kams_erp.order,type:0
+msgid "Shipping address"
+msgstr "Shipping address"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_signup_expiration
+msgid "Signup Expiration"
+msgstr "Signup Expiration"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_signup_token
+msgid "Signup Token"
+msgstr "Signup Token"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_signup_type
+msgid "Signup Token Type"
+msgstr "Signup Token Type"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_signup_valid
+msgid "Signup Token is Valid"
+msgstr "Signup Token is Valid"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_signup_url
+msgid "Signup URL"
+msgstr "Signup URL"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_image_small
+msgid "Small-sized image"
+msgstr "Small-sized image"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_image_small
+msgid "Small-sized image of this contact. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Small-sized image of this contact. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_state_id
+msgid "State"
+msgstr "State"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_street
+msgid "Street"
+msgstr "Street"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_street2
+msgid "Street2"
+msgstr "Street2"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_vat
+msgid "TIN"
+msgstr "TIN"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_category_id
+msgid "Tags"
+msgstr "Tags"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_vat
+msgid "Tax Identification Number. Fill it if the company is subjected to taxes. Used by the some of the legal statements."
+msgstr "Tax Identification Number. Fill it if the company is subjected to taxes. Used by the some of the legal statements."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_company_type
+msgid "Technical field, used only to display a boolean using a radio button. As for Odoo v9 RadioButton cannot be used on boolean fields, this one serves as interface. Due to the old API limitations with interface function field, we implement it by hand instead of a true function field. When migrating to the new API the code should be simplified."
+msgstr "Technical field, used only to display a boolean using a radio button. As for Odoo v9 RadioButton cannot be used on boolean fields, this one serves as interface. Due to the old API limitations with interface function field, we implement it by hand instead of a true function field. When migrating to the new API the code should be simplified."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_property_account_position_id
+msgid "The fiscal position will determine taxes and accounts used for the partner."
+msgstr "The fiscal position will determine taxes and accounts used for the partner."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_user_id
+msgid "The internal user that is in charge of communicating with this contact if any."
+msgstr "The internal user that is in charge of communicating with this contact if any."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_has_unreconciled_entries
+msgid "The partner has at least one unreconciled debit and credit since last time the invoices & payments matching was performed."
+msgstr "The partner has at least one unreconciled debit and credit since last time the invoices & payments matching was performed."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_tz
+msgid "The partner's timezone, used to output proper date and time values inside printed reports. It is important to set a value for this field. You should use the same timezone that is otherwise used to pick and render date and time values: your computer's timezone."
+msgstr "The partner's timezone, used to output proper date and time values inside printed reports. It is important to set a value for this field. You should use the same timezone that is otherwise used to pick and render date and time values: your computer's timezone."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_property_account_payable_id
+msgid "This account will be used instead of the default one as the payable account for the current partner"
+msgstr "This account will be used instead of the default one as the payable account for the current partner"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_property_account_receivable_id
+msgid "This account will be used instead of the default one as the receivable account for the current partner"
+msgstr "This account will be used instead of the default one as the receivable account for the current partner"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_image
+msgid "This field holds the image used as avatar for this contact, limited to 1024x1024px"
+msgstr "This field holds the image used as avatar for this contact, limited to 1024x1024px"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_property_supplier_payment_term_id
+msgid "This payment term will be used instead of the default one for purchase orders and vendor bills"
+msgstr "This payment term will be used instead of the default one for purchase orders and vendor bills"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_property_payment_term_id
+msgid "This payment term will be used instead of the default one for sale orders and customer invoices"
+msgstr "This payment term will be used instead of the default one for sale orders and customer invoices"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_property_product_pricelist
+msgid "This pricelist will be used, instead of the default one, for sales to the current partner"
+msgstr "This pricelist will be used, instead of the default one, for sales to the current partner"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_tz
+msgid "Timezone"
+msgstr "Timezone"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_tz_offset
+msgid "Timezone offset"
+msgstr "Timezone offset"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_title
+msgid "Title"
+msgstr "Title"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_total_invoiced
+msgid "Total Invoiced"
+msgstr "Total Invoiced"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_debit
+msgid "Total Payable"
+msgstr "Total Payable"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_credit
+msgid "Total Receivable"
+msgstr "Total Receivable"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_credit
+msgid "Total amount this customer owes you."
+msgstr "Total amount this customer owes you."
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_debit
+msgid "Total amount you have to pay to this vendor."
+msgstr "Total amount you have to pay to this vendor."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_unread
+msgid "Unread Messages"
+msgstr "Unread Messages"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Unread Messages Counter"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_use_parent_address
+msgid "Use Company Address"
+msgstr "Use Company Address"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_type
+msgid "Used to select automatically the right address according to the context in sales and purchases documents."
+msgstr "Used to select automatically the right address according to the context in sales and purchases documents."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_user_ids
+msgid "Users"
+msgstr "Users"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_currency_id
+msgid "Utility field to express amount currency"
+msgstr "Utility field to express amount currency"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_value
+msgid "Value"
+msgstr "Value"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_value2
+msgid "Value2"
+msgstr "Value2"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_property_supplier_payment_term_id
+msgid "Vendor Payment Term"
+msgstr "Vendor Payment Term"
+
+#. module: kams_erp
+#: model:ir.actions.act_window,help:kams_erp.portal_action_invoices
+msgid "We haven't sent you any invoice."
+msgstr "We haven't sent you any invoice."
+
+#. module: kams_erp
+#: model:ir.actions.act_window,help:kams_erp.action_quotations_portal
+msgid "We haven't sent you any quotation."
+msgstr "We haven't sent you any quotation."
+
+#. module: kams_erp
+#: model:ir.actions.act_window,help:kams_erp.action_orders_portal
+msgid "We haven't sent you any sales order."
+msgstr "We haven't sent you any sales order."
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_website
+msgid "Website"
+msgstr "Website"
+
+#. module: kams_erp
+#: model:ir.model.fields,help:kams_erp.field_kams_erp_order_website
+msgid "Website of Partner or Company"
+msgstr "Website of Partner or Company"
+
+#. module: kams_erp
+#: model:ir.model.fields,field_description:kams_erp.field_kams_erp_order_zip
+msgid "Zip"
+msgstr "Zip"
+
