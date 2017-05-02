@@ -608,5 +608,5 @@ class InstallKamsERP(object):
             break
 
 
-# InstallKamsERP().install_data_from_kqs(True)
-InstallKamsERP().get_orders()
+InstallKamsERP().install_data_from_kqs(True)
+# InstallKamsERP().get_orders()
