@@ -69,11 +69,8 @@ class KamsERPProducts(models.Model):
 
     def _count_amount_of_attribute_line(self, cr, uid, ids, values, arg, context):
         """ Count kind's amount of attribute line product the same kind. """
-        x = {}
-
-        for record in self.browse(cr, uid, ids):
-            x[record.id] = self.__get_amount_of_product(cr, uid, record.id, context)
-        return x
+        for record in self:
+            record.total_amount_of_attribute_line = self.__get_amount_of_product(cr, uid, record.id, context)
 
     price_kqs = fields.Float(related="list_price", string='Web Price', store=True)
     price_subiekt = fields.Float('Shop Price')
@@ -272,12 +269,10 @@ class KamsERPCategory(models.Model):
     _name = 'product.category'
     _inherit = 'product.category'
 
-    def _count_amount_of_product(self, cr, uid, ids, values, arg, context):
+    def _count_amount_of_product(self):
         """ Count kind's amount of product in category. """
-        x = {}
-        for record in self.browse(cr, uid, ids):
-            x[record.id] = len(record.product_ids)
-        return x
+        for record in self:
+            record.amount_of_product = len(record.product_ids)
 
     kqs_original_id = fields.Integer('Original KQS id', select=True, help="Gives the original KQS id of category.")
     product_ids = fields.Many2many('product.product', 'product_tmpl_id', string='Products', auto_join=True,

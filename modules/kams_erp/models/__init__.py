@@ -16,9 +16,7 @@ import kqs_products_attribute
 import kqs_products_category
 import kqs_supplier
 import mail_mail
-import settings
 import subiekt_group
 import subiekt_product
-import urls
-import wsgi
+
 

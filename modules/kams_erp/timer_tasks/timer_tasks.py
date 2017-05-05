@@ -16,7 +16,8 @@ from sqlalchemy.orm import create_session
 from kams_erp.models.kqs_products import KqsProdukty
 from kams_erp.utils.database_connector import DatabaseConnector
 from kams_erp.utils.xml_rpc_connector import XmlRpcConnector
-from kams_erp.models.settings import BROKER_URL, CELERY_RESULT_BACKEND
+from kams_erp.timer_tasks.settings import BROKER_URL, CELERY_RESULT_BACKEND
+
 
 
 
