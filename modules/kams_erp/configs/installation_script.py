@@ -22,7 +22,8 @@ from kams_erp.models.kamserp_config import DOMAIN, SUBIEKT_DATABASE_PASSWORD, SU
     SHIPMENT_PERSONAL_COLLECTION_DESCRIPTION, SHIPMENT_PERSONAL_COLLECTION_PRICE, \
     SHIPMENT_PAYMENT_ON_DELIVERY_DESCRIPTION, \
     SHIPMENT_PAYMENT_ON_DELIVERY_PRICE, SHIPMENT_INPOST_PRICE, SHIPMENT_INPOST_DESCRIPTION, SHIPMENT_PREPAYMENT_COST, \
-    SHIPMENT_PERSONAL_COLLECTION_COST, SHIPMENT_PAYMENT_ON_DELIVERY_COST, SHIPMENT_INPOST_COST
+    SHIPMENT_PERSONAL_COLLECTION_COST, SHIPMENT_PAYMENT_ON_DELIVERY_COST, SHIPMENT_INPOST_COST, ODOO_DATABASE_USER, \
+    ODOO_DATABASE_PASSWORD
 
 from kams_erp.models.kqs_images import KqsGaleriaZaczepy, KqsGaleria
 from kams_erp.models.kqs_manufacturer import KqsProducenci
@@ -283,13 +284,13 @@ class InstallKamsERP(object):
 
         return {
             'name': shipment_name,
-            'categ_id': odoo_category.get('id'),
+            'categ_id': odoo_category[0].get('id'),
             'description': shipment_description,
             'description_sale': shipment_description,
             'price': float(InstallKamsERP.__calculate_netto_price(shipment_price, 23)),
             'price_subiekt': float(InstallKamsERP.__calculate_netto_price(shipment_price, 23)),
             'standard_price': float(InstallKamsERP.__calculate_netto_price(shipment_cost, 23)),
-            'image': base64.encodestring(urllib2.urlopen(self.url + '/base/static/src/img/truck.png').read()),
+            'image': base64.encodestring(self.__get_image_with_credentials('/base/static/src/img/truck.png')),
             'warehouse_id':
                 self.connector.search('stock.warehouse', [[['name', '=', 'Kams Magazyn']]])[0],
         }
@@ -607,6 +608,12 @@ class InstallKamsERP(object):
                 self.__create_order_line(order, customer_order)
             break
 
+    def __get_image_with_credentials(self, image_path):
+        request = urllib2.Request(self.url)
+        # + image_path)
+        base64string = base64.b64encode('%s:%s' % (ODOO_DATABASE_USER, ODOO_DATABASE_PASSWORD))
+        request.add_header("Authorization", "Basic %s" % base64string)
+        return urllib2.urlopen(request).read()
 
 InstallKamsERP().install_data_from_kqs(True)
 # InstallKamsERP().get_orders()
