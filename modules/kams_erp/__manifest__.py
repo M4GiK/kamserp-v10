@@ -23,6 +23,10 @@
     # any module necessary for this one to work correctly
     'depends': ['portal_sale', 'web_kanban_gauge', 'account_accountant', 'stock'],
 
+    'qweb': [
+        'static/src/xml/widget.xml',
+    ],
+
     # always loaded
     'data': [
         'security/ir.model.access.csv',

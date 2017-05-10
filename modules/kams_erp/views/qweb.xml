@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="assets_backend" name="kams_erp assets" inherit_id="web.assets_backend">
+    <template id="assets_backend" name="kams_erp tree icon assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <!--<script type="text/javascript" src="/kams_erp/static/src/js/autorefresh.js"/>-->
+            <script type="text/javascript" src="/kams_erp/static/src/js/web_tree_image.js"/>
         </xpath>
     </template>
 </odoo>

@@ -6,9 +6,13 @@
 # @COPYRIGHT_end
 import psycopg2
 from kamserp_config import SHIPMENT_PAYMENT_ON_DELIVERY_NAME, SHIPMENT_PERSONAL_COLLECTION_NAME, \
-        SHIPMENT_PREPAYMENT_NAME, SHIPMENT_INPOST_NAME
+    SHIPMENT_PREPAYMENT_NAME, SHIPMENT_INPOST_NAME
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import except_orm
+
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class KamsERPProductsTemplate(models.Model):
@@ -55,133 +59,28 @@ class KamsERPProducts(models.Model):
     _name = 'product.product'
     _inherit = 'product.product'
 
-    def onchange_type(self, cr, uid, ids, type, context=None):
+    def onchange_type(self):
         return {'value': {}}
 
-    def __get_amount_of_product(self, cr, uid, id, context):
+    def __get_amount_of_product(self, record):
         total_amount = 0
-        r = self.read(cr, uid, id, ['product_tmpl_id'], context=context)
-        template = self.pool['product.template'].browse(cr, uid, r['product_tmpl_id'][0], context=context)
+        r = record.read(['product_tmpl_id'])
+        template = self.env['product.template'].browse(r[0]['product_tmpl_id'][0])
         for product_id in template.product_variant_ids:
             total_amount += product_id.qty_available
 
         return total_amount
 
-    def _count_amount_of_attribute_line(self, cr, uid, ids, values, arg, context):
+    @api.depends('product_tmpl_id')
+    def _count_amount_of_attribute_line(self):
         """ Count kind's amount of attribute line product the same kind. """
         for record in self:
-            record.total_amount_of_attribute_line = self.__get_amount_of_product(cr, uid, record.id, context)
+            record.total_amount_of_attribute_line = self.__get_amount_of_product(record)
 
     price_kqs = fields.Float(related="list_price", string='Web Price', store=True)
     price_subiekt = fields.Float('Shop Price')
     total_amount_of_attribute_line = fields.Integer(compute='_count_amount_of_attribute_line', method=True,
                                                     string='Total amount of this kind product')
-
-    def create_variant_ids(self, cr, uid, ids, context=None):
-        product_obj = self.pool.get("product.product")
-        ctx = context and context.copy() or {}
-        if ctx.get("create_product_variant"):
-            return None
-
-        ctx.update(active_test=False, create_product_variant=True)
-
-        tmpl_ids = self.browse(cr, uid, ids, context=ctx)
-        for tmpl_id in tmpl_ids:
-
-            # list of values combination
-            variant_alone = []
-            all_variants = [[]]
-            for variant_id in tmpl_id.attribute_line_ids:
-                if len(variant_id.value_ids) == 1:
-                    variant_alone.append(variant_id.value_ids[0])
-                temp_variants = []
-                for variant in all_variants:
-                    for value_id in variant_id.value_ids:
-                        temp_variants.append(sorted(variant + [int(value_id)]))
-                if temp_variants:
-                    all_variants = temp_variants
-
-            # adding an attribute with only one value should not recreate product
-            # write this attribute on every product to make sure we don't lose them
-            for variant_id in variant_alone:
-                product_ids = []
-                for product_id in tmpl_id.product_variant_ids:
-                    if not variant_id.attribute_id <= product_id.mapped('attribute_value_ids').mapped('attribute_id'):
-                        product_ids.append(product_id.id)
-                product_obj.write(cr, uid, product_ids, {'attribute_value_ids': [(4, variant_id.id)]}, context=ctx)
-
-            # check product
-            variant_ids_to_active = []
-            variants_active_ids = []
-            variants_inactive = []
-            for product_id in tmpl_id.product_variant_ids:
-                variants = sorted(map(int, product_id.attribute_value_ids))
-                if variants in all_variants:
-                    variants_active_ids.append(product_id.id)
-                    all_variants.pop(all_variants.index(variants))
-                    if not product_id.active:
-                        variant_ids_to_active.append(product_id.id)
-                else:
-                    variants_inactive.append(product_id)
-            if variant_ids_to_active:
-                product_obj.write(cr, uid, variant_ids_to_active, {'active': True}, context=ctx)
-
-            # create new product
-            for variant_ids in all_variants:
-                values = {
-                    'product_tmpl_id': tmpl_id.id,
-                    'attribute_value_ids': [(6, 0, variant_ids)]
-                }
-                id = product_obj.create(cr, uid, values, context=ctx)
-                variants_active_ids.append(id)
-
-            # unlink or inactive product
-            for variant_id in map(int, variants_inactive):
-                try:
-                    with cr.savepoint(), tools.mute_logger('openerp.sql_db'):
-                        product_obj.unlink(cr, uid, [variant_id], context=ctx)
-                # We catch all kind of exception to be sure that the operation doesn't fail.
-                except (psycopg2.Error, except_orm):
-                    product_obj.write(cr, uid, [variant_id], {'active': False}, context=ctx)
-                    pass
-        ctx.update(active_test=False, create_product_variant=False)
-        return True
-
-    def create(self, cr, uid, vals, context=None):
-        """
-        Store the initial standard price in order to be able to retrieve the cost of a product template for a given date
-
-        :param cr:
-        :param uid:
-        :param vals:
-        :param context:
-        :return:
-        """
-        tools.image_resize_images(vals)
-        product_id = super(KamsERPProducts, self).create(cr, uid, vals, context=context)
-        if not context or "create_product_product" not in context:
-            self.create_variant_ids(cr, uid, [product_id], context=context)
-
-        # TODO: this is needed to set given values to first variant after creation
-        # these fields should be moved to product as lead to confusion
-        related_vals = {}
-        if vals.get('barcode'):
-            related_vals['barcode'] = vals['barcode']
-        if vals.get('default_code'):
-            related_vals['default_code'] = vals['default_code']
-        if vals.get('standard_price'):
-            related_vals['standard_price'] = vals['standard_price']
-        if vals.get('volume'):
-            related_vals['volume'] = vals['volume']
-        if vals.get('weight'):
-            related_vals['weight'] = vals['weight']
-        if related_vals:
-            self.write(cr, uid, product_id, related_vals, context=context)
-
-        if 'categ_id' in vals:
-            self.__update_category(cr, uid, vals.get('categ_id'), product_id, context)
-
-        return product_id
 
     def __update_category(self, cr, uid, categ_id, product_id, context):
         category_obj = self.pool['product.category']

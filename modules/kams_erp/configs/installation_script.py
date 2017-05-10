@@ -31,6 +31,7 @@ from kams_erp.models.kqs_order import KqsZamowieniaProdukty, KqsZamowienia
 from kams_erp.models.kqs_products import KqsProdukty
 from kams_erp.models.kqs_products_attribute import KqsProduktyOpcje, KqsProduktyWartosci, KqsProduktyAtrybuty
 from kams_erp.models.kqs_products_category import KqsProduktyKategorie
+from kams_erp.models.kqs_category import KqsKategorie
 from kams_erp.models.kqs_supplier import KqsDostawcy
 from kams_erp.models.subiekt_product import TwTowar, TwStan, TwCena, get_last_buy_price
 from kams_erp.utils.database_connector import DatabaseConnector
@@ -84,7 +85,7 @@ class InstallKamsERP(object):
 
                 category_to_insert = [{
                     'name': category.nazwa,
-                    'parent_id': parent_odoo_id.get('id'),
+                    'parent_id': parent_odoo_id[0].get('id'),
                     'kqs_original_id': category.numer
                 }]
 
@@ -97,7 +98,7 @@ class InstallKamsERP(object):
 
                 cat_id = self.xml_operand.insert_category(category_to_insert).get('id')
         else:
-            cat_id = odoo_category.get('id')
+            cat_id = odoo_category[0].get('id')
 
         return cat_id
 
@@ -129,7 +130,7 @@ class InstallKamsERP(object):
                 }]
             manufacturer_id = self.xml_operand.insert_partner(manufacturer_to_insert).get('id')
         else:
-            manufacturer_id = odoo_manufacturer.get('id')
+            manufacturer_id = odoo_manufacturer[0].get('id')
         return manufacturer_id
 
     def __insert_or_find_supplier(self, suppliers, producent_id, purchase_price):
@@ -291,8 +292,8 @@ class InstallKamsERP(object):
             'price_subiekt': float(InstallKamsERP.__calculate_netto_price(shipment_price, 23)),
             'standard_price': float(InstallKamsERP.__calculate_netto_price(shipment_cost, 23)),
             'image': base64.encodestring(self.__get_image_with_credentials('/base/static/src/img/truck.png')),
-            'warehouse_id':
-                self.connector.search('stock.warehouse', [[['name', '=', 'Kams Magazyn']]])[0],
+            # 'warehouse_id':
+            #     self.connector.search('stock.warehouse', [[['name', '=', 'Kams Magazyn']]])[0],
         }
 
     def __insert_transport_as_product(self):
@@ -342,8 +343,8 @@ class InstallKamsERP(object):
             'price': float(self.__get_netto_price_for_product(product)),
             'price_subiekt': float(price),
             'description_sale': product.krotki_opis,
-            'warehouse_id':
-                self.connector.search('stock.warehouse', [[['name', '=', 'Kams Magazyn']]])[0],
+            # 'warehouse_id':
+            #     self.connector.search('stock.warehouse', [[['name', '=', 'Kams Magazyn']]])[0],
             'manufacturer_id': id_manufacturer,
             'seller_ids': [(4, id_supplier)],
             'weight': convert_decimal_to_float(product.waga),
@@ -422,9 +423,9 @@ class InstallKamsERP(object):
 
     def __get_tax_id(self, product):
         if product.podatek == 8:
-            tax = self.xml_operand.find_tax([[['name', '=', 'VAT-8%']]])
+            tax = self.xml_operand.find_tax([[['name', '=', 'VAT-8%']]])[0]
         else:
-            tax = self.xml_operand.find_tax([[['name', '=', 'VAT-23%']]])
+            tax = self.xml_operand.find_tax([[['name', '=', 'VAT-23%']]])[0]
 
         return tax.get('id')
 
@@ -609,8 +610,7 @@ class InstallKamsERP(object):
             break
 
     def __get_image_with_credentials(self, image_path):
-        request = urllib2.Request(self.url)
-        # + image_path)
+        request = urllib2.Request(self.url + image_path)
         base64string = base64.b64encode('%s:%s' % (ODOO_DATABASE_USER, ODOO_DATABASE_PASSWORD))
         request.add_header("Authorization", "Basic %s" % base64string)
         return urllib2.urlopen(request).read()
