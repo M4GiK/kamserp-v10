@@ -27,17 +27,15 @@ class KamsERPProductsTemplate(models.Model):
          _("A unique_product_number can only be assigned to one product !")),
     ]
 
-    def unlink(self, cr, uid, ids, context=None):
-        stock_quant_obj = self.pool['stock.quant']
-        context.update({'force_unlink': True})
-        for product in self.browse(cr, uid, ids, context=context):
-            other_product_ids = self.pool.get('product.product').search(cr, uid, [('product_tmpl_id', '=', product.id)],
-                                                                        context=context)
+    @api.multi
+    def unlink(self):
+        stock_quant_obj = self.env['stock.quant']
+        for product in self:
+            other_product_ids = self.env['product.product'].search([('product_tmpl_id', '=', product.id)])
             for product_product in other_product_ids:
-                quant_id = stock_quant_obj.search(cr, uid, [('product_id', '=', product_product)], context=context)
-                self.pool.get('stock.quant').unlink(cr, uid, quant_id, context=context)
+                stock_quant_obj.with_context(force_unlink=True).search([('product_id', '=', product_product.id)]).unlink()
                 # self.__remove_from_category(cr, uid, product.categ_id.id, product.id, context)
-        res = super(KamsERPProductsTemplate, self).unlink(cr, uid, ids, context=context)
+        res = super(KamsERPProductsTemplate, self).unlink()
 
         return res
 
@@ -95,44 +93,67 @@ class KamsERPProducts(models.Model):
             except TypeError:
                 pass
 
-    def unlink(self, cr, uid, ids, context=None):
-        unlink_ids = []
-        unlink_product_tmpl_ids = []
-        stock_quant_obj = self.pool['stock.quant']
-        if context.get("create_product_variant"):
-            for product in self.browse(cr, uid, ids, context=context):
-                # Check if product still exists, in case it has been unlinked by unlinking its template
-                if not product.exists():
-                    continue
-                tmpl_id = product.product_tmpl_id.id
-                # Check if the product is last product of this template
-                other_product_ids = self.search(cr, uid, [('product_tmpl_id', '=', tmpl_id), ('id', '!=', product.id)],
-                                                context=context)
-                if not other_product_ids:
-                    unlink_product_tmpl_ids.append(tmpl_id)
-                unlink_ids.append(product.id)
-            res = super(KamsERPProducts, self).unlink(cr, uid, unlink_ids, context=context)
-            # delete templates after calling super, as deleting template could lead to deleting
-            # products due to ondelete='cascade'
-            self.pool.get('product.template').unlink(cr, uid, unlink_product_tmpl_ids, context=context)
-        else:
-            context.update({'force_unlink': True})
-            for product in self.browse(cr, uid, ids, context=context):
-                # Check if product still exists, in case it has been unlinked by unlinking its template
-                if not product.exists():
-                    continue
-                tmpl_id = product.product_tmpl_id.id
-                # Force delete stock quant.
-                quant_id = stock_quant_obj.search(cr, uid, [('product_id', '=', product.id)], context=context)
-                self.pool.get('stock.quant').unlink(cr, uid, quant_id, context=context)
-                unlink_product_tmpl_ids.append(tmpl_id)
-                unlink_ids.append(product.id)
-            res = super(KamsERPProducts, self).unlink(cr, uid, unlink_ids, context=context)
-            # delete templates after calling super, as deleting template could lead to deleting
-            # products due to ondelete='cascade'
-            self.pool.get('product.template').unlink(cr, uid, unlink_product_tmpl_ids, context=context)
+    @api.multi
+    def unlink(self):
+        unlink_products = self.env['product.product']
+        unlink_templates = self.env['product.template']
+        stock_quant_obj = self.env['stock.quant']
+        for product in self:
+            # Check if product still exists, in case it has been unlinked by unlinking its template
+            if not product.exists():
+                continue
+            # Check if the product is last product of this template
+            other_products = self.search([('product_tmpl_id', '=', product.product_tmpl_id.id), ('id', '!=', product.id)])
 
+            # Force delete stock quant.
+            stock_quant_obj.with_context(force_unlink=True).search([('product_id', '=', product.id)]).unlink()
+
+            if not other_products:
+                unlink_templates |= product.product_tmpl_id
+            unlink_products |= product
+        res = super(KamsERPProducts, unlink_products).unlink()
+        # delete templates after calling super, as deleting template could lead to deleting
+        # products due to ondelete='cascade'
+        unlink_templates.unlink()
         return res
+
+        # unlink_ids = []
+        # unlink_product_tmpl_ids = []
+        # stock_quant_obj = self.pool['stock.quant']
+        # if context.get("create_product_variant"):
+        #     for product in self.browse(cr, uid, ids, context=context):
+        #         # Check if product still exists, in case it has been unlinked by unlinking its template
+        #         if not product.exists():
+        #             continue
+        #         tmpl_id = product.product_tmpl_id.id
+        #         # Check if the product is last product of this template
+        #         other_product_ids = self.search(cr, uid, [('product_tmpl_id', '=', tmpl_id), ('id', '!=', product.id)],
+        #                                         context=context)
+        #         if not other_product_ids:
+        #             unlink_product_tmpl_ids.append(tmpl_id)
+        #         unlink_ids.append(product.id)
+        #     res = super(KamsERPProducts, self).unlink(cr, uid, unlink_ids, context=context)
+        #     # delete templates after calling super, as deleting template could lead to deleting
+        #     # products due to ondelete='cascade'
+        #     self.pool.get('product.template').unlink(cr, uid, unlink_product_tmpl_ids, context=context)
+        # else:
+        #     context.update({'force_unlink': True})
+        #     for product in self.browse(cr, uid, ids, context=context):
+        #         # Check if product still exists, in case it has been unlinked by unlinking its template
+        #         if not product.exists():
+        #             continue
+        #         tmpl_id = product.product_tmpl_id.id
+        #         # Force delete stock quant.
+        #         quant_id = stock_quant_obj.search(cr, uid, [('product_id', '=', product.id)], context=context)
+        #         self.pool.get('stock.quant').unlink(cr, uid, quant_id, context=context)
+        #         unlink_product_tmpl_ids.append(tmpl_id)
+        #         unlink_ids.append(product.id)
+        #     res = super(KamsERPProducts, self).unlink(cr, uid, unlink_ids, context=context)
+        #     # delete templates after calling super, as deleting template could lead to deleting
+        #     # products due to ondelete='cascade'
+        #     self.pool.get('product.template').unlink(cr, uid, unlink_product_tmpl_ids, context=context)
+        #
+        # return res
 
 
 class KamsERPManufacturer(models.Model):
@@ -168,15 +189,9 @@ class KamsERPCategory(models.Model):
     _name = 'product.category'
     _inherit = 'product.category'
 
-    def _count_amount_of_product(self):
-        """ Count kind's amount of product in category. """
-        for record in self:
-            record.amount_of_product = len(record.product_ids)
-
     kqs_original_id = fields.Integer('Original KQS id', select=True, help="Gives the original KQS id of category.")
     product_ids = fields.Many2many('product.product', 'product_tmpl_id', string='Products', auto_join=True,
                                    ondelete='cascade'),
-    amount_of_product = fields.Integer(compute='_count_amount_of_product', method=True, string='Kind of products')
 
 
 class KamsERPOrder(models.Model):

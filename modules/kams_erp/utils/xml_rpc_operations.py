@@ -100,7 +100,14 @@ class XmlRpcOperations(XmlRpcConnector):
         category_id = self.search('product.category', param)
         if len(category_id) > 0:
             category_id = category_id[0]
-        return self.read('product.category', [category_id])
+
+        category_obj = self.read('product.category', [category_id])
+
+        if isinstance(category_obj, list):
+            if len(category_obj) > 0:
+                category_obj = category_obj[0]
+
+        return category_obj
 
     def update_category(self, id_record, data_to_update, read=True):
         """
@@ -154,7 +161,14 @@ class XmlRpcOperations(XmlRpcConnector):
         partner_id = self.search('res.partner', param)
         if len(partner_id) > 0:
             partner_id = partner_id[0]
-        return self.read('res.partner', [partner_id])
+
+        partner_obj = self.read('res.partner', [partner_id])
+
+        if isinstance(partner_obj, list):
+            if len(partner_obj) > 0:
+                partner_obj = partner_obj[0]
+
+        return partner_obj
 
     def insert_supplier(self, supplier):
         """
@@ -214,7 +228,14 @@ class XmlRpcOperations(XmlRpcConnector):
         attribute_id = self.search('product.attribute', param)
         if len(attribute_id) > 0:
             attribute_id = attribute_id[0]
-        return self.read('product.attribute', [attribute_id])
+
+        attribute_obj = self.read('product.attribute', [attribute_id])
+
+        if isinstance(attribute_obj, list):
+            if len(attribute_obj) > 0:
+                attribute_obj = attribute_obj[0]
+
+        return attribute_obj
 
     def insert_attribute_values(self, attribute_value):
         """
@@ -234,7 +255,14 @@ class XmlRpcOperations(XmlRpcConnector):
         attribute_values_id = self.search('product.attribute.value', param)
         if len(attribute_values_id) > 0:
             attribute_values_id = attribute_values_id[0]
-        return self.read('product.attribute.value', [attribute_values_id])
+
+        attribute_vaules_obj = self.read('product.attribute.value', [attribute_values_id])
+
+        if isinstance(attribute_vaules_obj, list):
+            if len(attribute_vaules_obj) > 0:
+                attribute_vaules_obj = attribute_vaules_obj[0]
+
+        return attribute_vaules_obj
 
     def update_attribute_values(self, id_record, data_to_update, read=True):
         """
@@ -298,7 +326,14 @@ class XmlRpcOperations(XmlRpcConnector):
         attribute_line_id = self.search('product.attribute.line', param)
         if len(attribute_line_id) > 0:
             attribute_line_id = attribute_line_id[0]
-        return self.read('product.attribute.line', [attribute_line_id])
+
+        attribute_line_obj = self.read('product.attribute.line', [attribute_line_id])
+
+        if isinstance(attribute_line_obj, list):
+            if len(attribute_line_obj) > 0:
+                attribute_line_obj = attribute_line_obj[0]
+
+        return attribute_line_obj
 
     def insert_stock_move(self, stock_move):
         """

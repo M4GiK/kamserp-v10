@@ -85,7 +85,7 @@ class InstallKamsERP(object):
 
                 category_to_insert = [{
                     'name': category.nazwa,
-                    'parent_id': parent_odoo_id[0].get('id'),
+                    'parent_id': parent_odoo_id.get('id'),
                     'kqs_original_id': category.numer
                 }]
 
@@ -98,7 +98,7 @@ class InstallKamsERP(object):
 
                 cat_id = self.xml_operand.insert_category(category_to_insert).get('id')
         else:
-            cat_id = odoo_category[0].get('id')
+            cat_id = odoo_category.get('id')
 
         return cat_id
 
@@ -111,6 +111,7 @@ class InstallKamsERP(object):
     def __insert_or_find_manufacturer(self, manufacturers, producent_id, is_supplier):
         odoo_manufacturer = self.xml_operand.find_partner([[['kqs_original_id', '=', producent_id]]])
         if not odoo_manufacturer:
+            print manufacturers
             manufacturer = next((manufacturer for manufacturer in manufacturers if manufacturer.numer == producent_id))
             try:
                 image_manufacturer = "http://kams.com.pl/galerie/producenci/" + manufacturer.logo_producenta
@@ -130,7 +131,7 @@ class InstallKamsERP(object):
                 }]
             manufacturer_id = self.xml_operand.insert_partner(manufacturer_to_insert).get('id')
         else:
-            manufacturer_id = odoo_manufacturer[0].get('id')
+            manufacturer_id = odoo_manufacturer.get('id')
         return manufacturer_id
 
     def __insert_or_find_supplier(self, suppliers, producent_id, purchase_price):
@@ -209,7 +210,6 @@ class InstallKamsERP(object):
                     else:
                         self.xml_operand.update_attribute_line(odoo_attribute_line.get('id'),
                                                                attribute_line_to_insert, read=False)
-
                     product_variants_to_update = {
                         'attribute_line_ids': [(4, odoo_attribute_line.get('id'))],
                     }
@@ -285,7 +285,7 @@ class InstallKamsERP(object):
 
         return {
             'name': shipment_name,
-            'categ_id': odoo_category[0].get('id'),
+            'categ_id': odoo_category.get('id'),
             'description': shipment_description,
             'description_sale': shipment_description,
             'price': float(InstallKamsERP.__calculate_netto_price(shipment_price, 23)),
@@ -614,6 +614,12 @@ class InstallKamsERP(object):
         base64string = base64.b64encode('%s:%s' % (ODOO_DATABASE_USER, ODOO_DATABASE_PASSWORD))
         request.add_header("Authorization", "Basic %s" % base64string)
         return urllib2.urlopen(request).read()
+
+    def __key_of_a_value(search):
+        for k, v in d.iteritems():
+            if v == search:
+                return k
+
 
 InstallKamsERP().install_data_from_kqs(True)
 # InstallKamsERP().get_orders()
