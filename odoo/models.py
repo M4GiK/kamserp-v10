@@ -678,7 +678,7 @@ class BaseModel(object):
                 field = cls._fields.get(name)
                 if not field:
                     _logger.warning("method %s.%s: @constrains parameter %r is not a field name", cls._name, attr, name)
-                elif not (field.store or field.inverse):
+                elif not (field.store or field.inverse or field.inherited):
                     _logger.warning("method %s.%s: @constrains parameter %r is not writeable", cls._name, attr, name)
             methods.append(func)
 
@@ -4367,7 +4367,7 @@ class BaseModel(object):
                     del vals['source']      # remove source to avoid triggering _set_src
                     del vals['module']      # duplicated vals is not linked to any module
                     vals['res_id'] = target_id
-                    if vals['lang'] == old.env.lang:
+                    if vals['lang'] == old.env.lang and field.translate is True:
                         # 'source' to force the call to _set_src
                         # 'value' needed if value is changed in copy(), want to see the new_value
                         vals['source'] = old_wo_lang[name]

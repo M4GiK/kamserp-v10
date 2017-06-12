@@ -6,9 +6,9 @@
 # Martin Trigaux <mat@odoo.com>, 2017
 # nasaaskii <nasaaskii@gmail.com>, 2017
 # ERDENESAIKHAN BATZORIG <esab.orgil@gmail.com>, 2017
-# Erdenebold Ts <erdenebold10@gmail.com>, 2017
 # Otgonbayar.A <gobi.mn@gmail.com>, 2017
 # odmunkh enkh-ochir <odmunkh0609@gmail.com>, 2017
+# Erdenebold Ts <erdenebold10@gmail.com>, 2017
 # Unurjargal Tsoodol <unuruu25@gmail.com>, 2017
 msgid ""
 msgstr ""
@@ -99,7 +99,7 @@ msgstr "<span>Тайлангууд</span>"
 #. module: hr_recruitment
 #: model:ir.ui.view,arch_db:hr_recruitment.view_hr_job_kanban
 msgid "<span>View</span>"
-msgstr "<span>Харах</span>"
+msgstr "<span>Харагдац</span>"
 
 #. module: hr_recruitment
 #: model:ir.model.fields,help:hr_recruitment.field_hr_job_alias_defaults
@@ -381,7 +381,7 @@ msgstr "Өнгөний Индекс"
 #: model:ir.model.fields,field_description:hr_recruitment.field_hr_recruitment_report_company_id
 #: model:ir.ui.view,arch_db:hr_recruitment.view_hr_recruitment_report_search
 msgid "Company"
-msgstr "Байгууллага"
+msgstr "Компани"
 
 #. module: hr_recruitment
 #: model:ir.ui.menu,name:hr_recruitment.menu_hr_recruitment_configuration
@@ -948,7 +948,7 @@ msgstr "Гар утас:"
 #. module: hr_recruitment
 #: model:ir.ui.view,arch_db:hr_recruitment.view_hr_job_kanban
 msgid "More <i class=\"fa fa-caret-down\"/>"
-msgstr "Дэлгэрэнгүй <i class=\"fa fa-caret-down\"/>"
+msgstr "Илүү <i class=\"fa fa-caret-down\"/>"
 
 #. module: hr_recruitment
 #: model:ir.ui.view,arch_db:hr_recruitment.view_crm_case_jobs_filter
@@ -1071,7 +1071,7 @@ msgstr ""
 #. module: hr_recruitment
 #: model:res.groups,name:hr_recruitment.group_hr_recruitment_user
 msgid "Officer"
-msgstr ""
+msgstr "Мэргэжилтэн"
 
 #. module: hr_recruitment
 #: model:ir.actions.act_window,help:hr_recruitment.action_hr_job
@@ -1148,6 +1148,10 @@ msgid ""
 "- partners: only authenticated partners\n"
 "- followers: only followers of the related document or members of following channels\n"
 msgstr ""
+"mailgateway ашиглан баримтанд зурвас илгээх бодлого.\n"
+"- бүгд: бигд илгээж болно\n"
+"- харилцагчид: зөвхөн баталгаажсан харилцагчид\n"
+"- дагагчид: баримтын зөвхөн дагагчид эсвэл сувгийн гишүүд\n"
 
 #. module: hr_recruitment
 #: model:ir.model.fields,field_description:hr_recruitment.field_hr_applicant_probability
@@ -1416,7 +1420,7 @@ msgstr ""
 #. module: hr_recruitment
 #: sql_constraint:hr.applicant.category:0
 msgid "Tag name already exists !"
-msgstr ""
+msgstr "Пайзын нэр аль хэдийн үүссэн байна"
 
 #. module: hr_recruitment
 #: model:ir.actions.act_window,name:hr_recruitment.hr_applicant_category_action
@@ -1523,7 +1527,7 @@ msgstr ""
 msgid ""
 "This stage is folded in the kanban view when there are no records in that "
 "stage to display."
-msgstr ""
+msgstr "Энэ үе нь Канбан харагдацад бичлэг байхгүй үедээ эвхэгдэж харагдана."
 
 #. module: hr_recruitment
 #. openerp-web

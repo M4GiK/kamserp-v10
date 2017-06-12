@@ -1235,6 +1235,8 @@ msgid ""
 "Click here to <b>create your first opportunity</b> and add it to your "
 "pipeline."
 msgstr ""
+"Paina tästä <b>luodaksesi ensimmäisen myyntimahdollisuutesi</b> ja "
+"lisätäksesi sen myyntiputkeesi."
 
 #. module: crm
 #. openerp-web
@@ -1709,7 +1711,7 @@ msgstr ""
 #. module: crm
 #: model:ir.ui.view,arch_db:crm.crm_planner
 msgid "Deployment"
-msgstr ""
+msgstr "Käyttööonotto"
 
 #. module: crm
 #: model:ir.ui.view,arch_db:crm.crm_case_form_view_leads
@@ -3606,7 +3608,7 @@ msgstr "Ehdotetut seuraavat toimenpiteet"
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_team_alias_force_thread_id
 msgid "Record Thread ID"
-msgstr ""
+msgstr "Tietueen keskustelun ID"
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead_referred
@@ -4296,7 +4298,7 @@ msgstr "Liian kallis"
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_opportunity_report_total_revenue
 msgid "Total Revenue"
-msgstr "Kokonaisliikevaihto"
+msgstr "Kokonaismyynti"
 
 #. module: crm
 #: model:ir.ui.view,arch_db:crm.crm_case_form_view_leads
