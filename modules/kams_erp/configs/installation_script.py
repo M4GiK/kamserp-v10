@@ -615,11 +615,6 @@ class InstallKamsERP(object):
         request.add_header("Authorization", "Basic %s" % base64string)
         return urllib2.urlopen(request).read()
 
-    def __key_of_a_value(search):
-        for k, v in d.iteritems():
-            if v == search:
-                return k
-
 
 InstallKamsERP().install_data_from_kqs(True)
 # InstallKamsERP().get_orders()
