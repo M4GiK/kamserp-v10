@@ -1,3 +1,4 @@
+sqlalchemy
 Babel==2.3.4
 decorator==4.0.10
 docutils==0.12
@@ -40,3 +41,5 @@ wsgiref==0.1.2
 XlsxWriter==0.9.3
 xlwt==1.1.2
 xlrd==1.0.0
+pymysql==0.7.11
+pyodbc==4.0.16
