@@ -170,6 +170,7 @@ setup(
         'werkzeug',
         'xlsxwriter',
         'xlwt',
+        'sqlalchemy',
     ],
     extras_require={
         'SSL': ['pyopenssl'],
