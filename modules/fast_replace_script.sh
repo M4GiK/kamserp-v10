@@ -37,6 +37,7 @@ function replace_module
             echo "File not found"
         fi
     else
+        echo -e "Copying files"
         sudo cp /media/sf_odoo/odoo/modules/kams_erp/ . -R
         change_file_privilege /opt/odoo/modules/kams_erp/
     fi
@@ -56,6 +57,7 @@ function replace_all
             echo "File not found"
         fi
     else
+        echo -e "Copying files"
         sudo rsync -ar --progress /media/sf_odoo/odoo/ /opt/odoo/ --exclude=.git --exclude=.idea --exclude=.mailmap
         change_file_privilege /opt/odoo
     fi
