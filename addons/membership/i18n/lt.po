@@ -51,7 +51,7 @@ msgstr ""
 #. module: membership
 #: model:ir.ui.view,arch_db:membership.membership_products_form
 msgid "Add a description..."
-msgstr ""
+msgstr "Pridėkite aprašymą..."
 
 #. module: membership
 #: model:ir.ui.view,arch_db:membership.view_res_partner_member_filter
@@ -171,7 +171,7 @@ msgstr "Pirkėjai"
 #: model:ir.model.fields,help:membership.field_product_template_membership_date_from
 #: model:ir.model.fields,help:membership.field_res_partner_membership_start
 msgid "Date from which membership becomes active."
-msgstr ""
+msgstr "Data, nuo kurios narystė tampa aktyvia."
 
 #. module: membership
 #: model:ir.model.fields,help:membership.field_membership_membership_line_date
@@ -187,7 +187,7 @@ msgstr ""
 #: model:ir.model.fields,help:membership.field_product_template_membership_date_to
 #: model:ir.model.fields,help:membership.field_res_partner_membership_stop
 msgid "Date until which membership remains active."
-msgstr ""
+msgstr "Data, iki kurios narystė išlieka aktyvi."
 
 #. module: membership
 #: model:ir.model.fields,field_description:membership.field_membership_invoice_display_name
@@ -240,7 +240,7 @@ msgstr ""
 #. module: membership
 #: model:ir.ui.view,arch_db:membership.view_report_membership_search
 msgid "Forecast"
-msgstr ""
+msgstr "Prognozė"
 
 #. module: membership
 #: model:ir.model.fields,field_description:membership.field_res_partner_free_member
@@ -575,7 +575,7 @@ msgstr "Pradžios data"
 #. module: membership
 #: model:ir.ui.view,arch_db:membership.view_res_partner_member_filter
 msgid "Start Month"
-msgstr ""
+msgstr "Pradžios mėnuo"
 
 #. module: membership
 #: model:ir.ui.view,arch_db:membership.view_res_partner_member_filter
